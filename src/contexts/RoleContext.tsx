@@ -25,7 +25,7 @@ interface RoleProviderProps {
 
 export const RoleProvider = ({ children }: RoleProviderProps) => {
   const { config, configDispatch } = useSettingsContext();
-  const [role, setRoleState] = useState<UserRole>((config.role as UserRole) || 'subscriber');
+  const [role, setRoleState] = useState<UserRole>((config.role as UserRole) || null);
 
   // Sync with settings when they change from other parts of the app
   useEffect(() => {

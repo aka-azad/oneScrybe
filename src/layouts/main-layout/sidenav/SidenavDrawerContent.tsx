@@ -25,7 +25,6 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
     setConfig,
   } = useSettingsContext();
   const { role } = useRole();
-  console.log(role);
 
   const { sidenavAppbarVariant } = useNavContext();
   // Filter items based on role
@@ -36,7 +35,7 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
           // Filter section items by role
           const filteredItems =
             section.items?.filter((item) => {
-              return !item.roles || item.roles.includes(role);
+              return !item.roles || item.roles.includes(role || 'subscriber');
             }) || [];
 
           // Return a new section with filtered items
@@ -50,7 +49,6 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
 
     return filterByRole(sitemap);
   }, [role, sitemap]);
-  console.log(filteredSitemap);
 
   const expanded = useMemo(
     () => variant === 'temporary' || (variant === 'permanent' && !sidenavCollapsed),

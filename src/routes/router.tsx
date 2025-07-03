@@ -10,6 +10,7 @@ import Competitors from 'pages/dashboards/Competitors';
 import Insights from 'pages/dashboards/Insights';
 import MyContent from 'pages/dashboards/MyContent';
 import Page404 from 'pages/errors/Page404';
+import { RoleGuard } from '@/components/guard/RoleGuard';
 // import PageLoader from 'components/loading/PageLoader';
 import AllFiles from 'components/sections/file-manager/main/all-files';
 import RecentFiles from 'components/sections/file-manager/main/recent-files';
@@ -133,43 +134,83 @@ export const routes: RouteObject[] = [
         children: [
           {
             path: paths.analytics,
-            element: <Analytics />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <Analytics />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.competitors,
-            element: <Competitors />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <Competitors />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.insights,
-            element: <Insights />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <Insights />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.myContent,
-            element: <MyContent />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <MyContent />
+              </RoleGuard>
+            ),
           },
           {
             index: true,
-            element: <ECommerce />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <ECommerce />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.project,
-            element: <ProjectManagement />,
+            element: (
+              <RoleGuard allowedRole="creator">
+                <ProjectManagement />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.crm,
-            element: <CRM />,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <CRM />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.analytics1,
-            element: <Analytics1 />,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <Analytics1 />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.hrm,
-            element: <HRM />,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <HRM />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.timeTracker,
-            element: <TimeTracker />,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <TimeTracker />
+              </RoleGuard>
+            ),
           },
           {
             path: paths.starter,

@@ -7,7 +7,7 @@ export type TopnavType = 'default' | 'stacked' | 'slim';
 export type TextDirection = 'ltr' | 'rtl';
 export type NavColor = 'default' | 'vibrant';
 export type SupportedLocales = 'en-US' | 'fr-FR' | 'bn-BD' | 'zh-CN' | 'hi-IN' | 'ar-SA';
-export type UserRole = 'subscriber' | 'creator';
+export type UserRole = 'subscriber' | 'creator' | null;
 
 export interface Config {
   textDirection: TextDirection;
@@ -32,7 +32,7 @@ export const initialConfig: Config = {
   openNavbarDrawer: false,
   drawerWidth: mainDrawerWidth.full,
   locale: 'en-US',
-  role: 'subscriber',
+  role: null,
 };
 
 export const defaultJwtAuthCredentials = {

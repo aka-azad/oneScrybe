@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonGroup, SxProps, Tooltip } from '@mui/material';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Switch from '@mui/material/Switch';
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
+import { Box, FormControlLabel, FormGroup, Switch, SxProps, Tooltip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { UserRole } from 'config';
 import { useRole } from 'contexts/RoleContext';
 
 interface RoleTogglerProps {
@@ -14,87 +15,35 @@ interface RoleTogglerProps {
 const RoleToggler = ({ type = 'default', sx }: RoleTogglerProps) => {
   const { t } = useTranslation();
   const { setRole, isCreator } = useRole();
+  useEffect(() => {
+    setRole(localStorage.getItem('role') as UserRole);
+  }, []);
 
-  const handleRoleChange = () => {
-    setRole(isCreator ? 'subscriber' : 'creator');
+  const handleRoleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRole(event.target.checked ? 'creator' : 'subscriber');
+    localStorage.setItem('role', event.target.checked ? 'creator' : 'subscriber');
   };
 
   if (type === 'slim') {
     return (
       <Tooltip title={t(isCreator ? 'Switch to Subscriber' : 'Switch to Creator')}>
-        <Button
-          color="neutral"
-          variant="text"
-          onClick={handleRoleChange}
-          sx={{
-            minWidth: 'auto',
-            p: 1,
-            ...sx,
-          }}
-        >
-          {t(isCreator ? 'Subscriber' : 'Creator')}
-        </Button>
+        <Box sx={{ display: 'flex', alignItems: 'center', ...sx }}>
+          <SubscriptionsOutlinedIcon fontSize="small" color={!isCreator ? 'primary' : 'action'} />
+          <Switch checked={isCreator} onChange={handleRoleChange} size="small" color="primary" />
+          <BorderColorOutlinedIcon fontSize="small" color={isCreator ? 'primary' : 'action'} />
+        </Box>
       </Tooltip>
     );
   }
 
   return (
-    <ButtonGroup
-      variant="contained"
-      size="small"
-      sx={{
-        boxShadow: 'none',
-        '& .MuiButtonGroup-grouped': {
-          minWidth: 100,
-          textTransform: 'none',
-          fontWeight: 500,
-          '&:not(:last-of-type)': {
-            borderRight: 'none',
-          },
-          '&.Mui-selected': {
-            backgroundColor: 'primary.main',
-            color: 'primary.contrastText',
-            '&:hover': {
-              backgroundColor: 'primary.dark',
-            },
-          },
-        },
-        ...sx,
-      }}
-    >
-      <Tooltip title={t('Switch to Subscriber')}>
-        <Button
-          onClick={() => setRole('subscriber')}
-          variant={!isCreator ? 'contained' : 'outlined'}
-          color={!isCreator ? 'primary' : 'inherit'}
-          sx={{
-            borderTopRightRadius: 0,
-            borderBottomRightRadius: 0,
-            '&:hover': {
-              borderColor: 'primary.main',
-            },
-          }}
-        >
-          {t('Subscriber')}
-        </Button>
-      </Tooltip>
-      <Tooltip title={t('Switch to Creator')}>
-        <Button
-          onClick={() => setRole('creator')}
-          variant={isCreator ? 'contained' : 'outlined'}
-          color={isCreator ? 'primary' : 'inherit'}
-          sx={{
-            borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0,
-            '&:hover': {
-              borderColor: 'primary.main',
-            },
-          }}
-        >
-          {t('Creator')}
-        </Button>
-      </Tooltip>
-    </ButtonGroup>
+    <Tooltip title={t(isCreator ? 'Switch to Subscriber' : 'Switch to Creator')}>
+      <Box sx={{ display: 'flex', alignItems: 'center', ...sx }}>
+        <SubscriptionsOutlinedIcon sx={{ mr: 1 }} color={!isCreator ? 'primary' : 'action'} />
+        <Switch checked={isCreator} onChange={handleRoleChange} color="primary" />
+        <BorderColorOutlinedIcon sx={{ ml: 1 }} color={isCreator ? 'primary' : 'action'} />
+      </Box>
+    </Tooltip>
   );
 };
 
