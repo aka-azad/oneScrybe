@@ -167,7 +167,7 @@ export const routes: RouteObject[] = [
           {
             index: true,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole="subscriber">
                 <ECommerce />
               </RoleGuard>
             ),

@@ -76,7 +76,7 @@ const sitemap: MenuItem[] = [
         pathName: 'e-commerce',
         icon: 'material-symbols:shopping-cart-outline',
         active: true,
-        roles: ['creator'],
+        roles: ['subscriber'],
       },
       {
         name: 'Project ',
