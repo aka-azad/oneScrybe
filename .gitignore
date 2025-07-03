@@ -21,6 +21,9 @@ dist-ssr
 *.sln
 *.sw?
 
-src/assets
+src/assets/audio
+src/assets/files
+src/assets/images
+src/assets/videos
 
 .env

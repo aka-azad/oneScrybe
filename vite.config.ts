@@ -33,6 +33,7 @@ export default ({ mode }) => {
     resolve: {
       alias: {
         'package.json': path.resolve(__dirname, './package.json'),
+        assets: path.resolve(__dirname, './src/assets'),
       },
     },
   });
