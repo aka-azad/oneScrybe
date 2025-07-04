@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -8,6 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { useSettingsContext } from 'providers/SettingsProvider';
 import sitemap from 'routes/sitemap';
 import { sidenavVibrantStyle } from 'theme/styles/vibrantNav';
+import { useRole } from '@/contexts/RoleContext';
 import Logo from 'components/common/Logo';
 import VibrantBackground from 'components/common/VibrantBackground';
 import { useNavContext } from '../NavProvider';
@@ -19,6 +20,29 @@ const SlimSidenav = () => {
     config: { sidenavCollapsed, drawerWidth, navColor, navigationMenuType },
   } = useSettingsContext();
   const { sidenavAppbarVariant } = useNavContext();
+  const { role } = useRole();
+
+  const filteredSitemap = useMemo(() => {
+    const filterByRole = (sections: typeof sitemap): typeof sitemap => {
+      return sections
+        .map((section) => {
+          // Filter section items by role
+          const filteredItems =
+            section.items?.filter((item) => {
+              return !item.roles || item.roles.includes(role || 'subscriber');
+            }) || [];
+
+          // Return a new section with filtered items
+          return {
+            ...section,
+            items: filteredItems,
+          };
+        })
+        .filter((section) => section.items && section.items.length > 0); // Remove empty sections
+    };
+
+    return filterByRole(sitemap);
+  }, [role, sitemap]);
 
   const drawer = (
     <>
@@ -56,7 +80,7 @@ const SlimSidenav = () => {
                 p: 2,
               }}
             >
-              {sitemap.map((menu, index) => (
+              {filteredSitemap.map((menu, index) => (
                 <Fragment key={menu.id}>
                   <List
                     component="nav"
@@ -71,7 +95,7 @@ const SlimSidenav = () => {
                       <SlimNavItem key={item.pathName} item={item} level={0} />
                     ))}
                   </List>
-                  {index !== sitemap.length - 1 && <Divider sx={[{ my: 1.5 }]} />}
+                  {index !== filteredSitemap.length - 1 && <Divider sx={[{ my: 1.5 }]} />}
                 </Fragment>
               ))}
             </Box>

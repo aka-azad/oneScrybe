@@ -11,6 +11,10 @@ import Insights from 'pages/dashboards/Insights';
 import MyContent from 'pages/dashboards/MyContent';
 import Page404 from 'pages/errors/Page404';
 import { RoleGuard } from '@/components/guard/RoleGuard';
+import ExploreMusic from '@/pages/dashboards/ExploreMusic';
+import Favorites from '@/pages/dashboards/Favorites';
+import Help from '@/pages/dashboards/Help';
+import Home from '@/pages/dashboards/Home';
 // import PageLoader from 'components/loading/PageLoader';
 import AllFiles from 'components/sections/file-manager/main/all-files';
 import RecentFiles from 'components/sections/file-manager/main/recent-files';
@@ -165,10 +169,42 @@ export const routes: RouteObject[] = [
             ),
           },
           {
-            index: true,
+            path: paths.eCommerce,
             element: (
               <RoleGuard allowedRole="subscriber">
                 <ECommerce />
+              </RoleGuard>
+            ),
+          },
+          {
+            path: paths.help,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <Help />
+              </RoleGuard>
+            ),
+          },
+          {
+            path: paths.favorites,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <Favorites />
+              </RoleGuard>
+            ),
+          },
+          {
+            path: paths.exploreMusic,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <ExploreMusic />
+              </RoleGuard>
+            ),
+          },
+          {
+            index: true,
+            element: (
+              <RoleGuard allowedRole="subscriber">
+                <Home />
               </RoleGuard>
             ),
           },

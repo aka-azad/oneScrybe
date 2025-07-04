@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Button, Stack } from '@mui/material';
 import clsx from 'clsx';
 import sitemap, { MenuItem } from 'routes/sitemap';
+import { useRole } from '@/contexts/RoleContext';
 import IconifyIcon from 'components/base/IconifyIcon';
 import { useNavContext } from '../NavProvider';
 import NavitemPopover from './NavItemPopover';
@@ -16,11 +17,32 @@ const TopnavItems = ({ type = 'default' }: TopnavItemsProps) => {
   const [selectedMenu, setSelectedMenu] = useState<null | MenuItem>(null);
   const { pathname } = useLocation();
   const { isNestedItemOpen } = useNavContext();
-
+  const { role } = useRole();
   useEffect(() => {
     setAnchorEl(null);
     setSelectedMenu(null);
   }, [pathname]);
+  const filteredSitemap = useMemo(() => {
+    const filterByRole = (sections: typeof sitemap): typeof sitemap => {
+      return sections
+        .map((section) => {
+          // Filter section items by role
+          const filteredItems =
+            section.items?.filter((item) => {
+              return !item.roles || item.roles.includes(role || 'subscriber');
+            }) || [];
+
+          // Return a new section with filtered items
+          return {
+            ...section,
+            items: filteredItems,
+          };
+        })
+        .filter((section) => section.items && section.items.length > 0); // Remove empty sections
+    };
+
+    return filterByRole(sitemap);
+  }, [role, sitemap]);
 
   return (
     <Stack
@@ -30,7 +52,7 @@ const TopnavItems = ({ type = 'default' }: TopnavItemsProps) => {
       }}
       className="nav-items"
     >
-      {sitemap.map((menu) => (
+      {filteredSitemap.map((menu) => (
         <Button
           key={menu.id}
           variant="text"

@@ -2,6 +2,8 @@ import docRoutePaths from 'docs/routes/docPaths';
 
 export const rootPaths = {
   root: '/',
+  creatorRoot: 'creator',
+  subscriberRoot: 'subscriber',
   dashboardRoot: 'dashboard',
   pagesRoot: 'pages',
   miscRoot: 'misc',
@@ -30,10 +32,18 @@ const paths = {
   analytics1: `/${rootPaths.dashboardRoot}/analytics1`,
   hrm: `/${rootPaths.dashboardRoot}/hrm`,
   timeTracker: `/${rootPaths.dashboardRoot}/time-tracker`,
-  analytics: `/${rootPaths.dashboardRoot}/analytics`,
-  competitors: `/${rootPaths.dashboardRoot}/competitors`,
-  insights: `/${rootPaths.dashboardRoot}/insights`,
-  myContent: `/${rootPaths.dashboardRoot}/my-content`,
+
+  analytics: `/${rootPaths.creatorRoot}/analytics`,
+  competitors: `/${rootPaths.creatorRoot}/competitors`,
+  insights: `/${rootPaths.creatorRoot}/insights`,
+  myContent: `/${rootPaths.creatorRoot}/my-content`,
+
+  eCommerce: `/${rootPaths.subscriberRoot}/e-commerce`,
+
+  help: `/${rootPaths.subscriberRoot}/help`,
+  favorites: `/${rootPaths.subscriberRoot}/favorites`,
+  exploreMusic: `/${rootPaths.subscriberRoot}/explore-music`,
+  home: `/${rootPaths.subscriberRoot}/home`,
 
   starter: `/${rootPaths.pagesRoot}/starter`,
   notifications: `/${rootPaths.pagesRoot}/notifications`,

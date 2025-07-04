@@ -8,7 +8,8 @@ import IconifyIcon from 'components/base/IconifyIcon';
 import Logo from 'components/common/Logo';
 import VibrantBackground from 'components/common/VibrantBackground';
 import AppbarActionItems from '../common/AppbarActionItems';
-import SearchBox, { SearchBoxButton } from '../common/search-box/SearchBox';
+
+// import SearchBox, { SearchBoxButton } from '../common/search-box/SearchBox';
 
 const AppBar = () => {
   const {
@@ -67,7 +68,7 @@ const AppBar = () => {
             flex: 1,
           }}
         >
-          {upMd ? (
+          {/* {upMd ? (
             <SearchBox
               sx={{
                 width: 1,
@@ -76,7 +77,7 @@ const AppBar = () => {
             />
           ) : (
             <SearchBoxButton />
-          )}
+          )} */}
           <AppbarActionItems />
         </Stack>
       </Toolbar>

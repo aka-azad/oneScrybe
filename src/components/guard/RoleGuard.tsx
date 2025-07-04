@@ -13,11 +13,14 @@ export const RoleGuard = ({ children, allowedRole }: RoleGuardProps) => {
   if (!role) {
     return <LoadingSkeleton />;
   }
+  if (allowedRole !== 'subscriber' && allowedRole !== 'creator') {
+    return <>{children}</>;
+  }
   if (role !== allowedRole && role !== 'creator') {
-    return <Navigate to="/dashboard/crm" replace />;
+    return <Navigate to="/" replace />;
   }
   if (role !== allowedRole && role !== 'subscriber') {
-    return <Navigate to="/dashboard/insights" replace />;
+    return <Navigate to="/creator/insights" replace />;
   }
 
   return <>{children}</>;

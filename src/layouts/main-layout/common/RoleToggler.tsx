@@ -16,7 +16,7 @@ const RoleToggler = ({ type = 'default', sx }: RoleTogglerProps) => {
   const { t } = useTranslation();
   const { setRole, isCreator } = useRole();
   useEffect(() => {
-    setRole(localStorage.getItem('role') as UserRole);
+    setRole((localStorage.getItem('role') as UserRole) || 'creator');
   }, []);
 
   const handleRoleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
