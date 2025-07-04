@@ -3,7 +3,10 @@ import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
 import { TaskMetrics } from 'types/project';
+// import UserByOS from '@/components/sections/dashboards/analytics/user-by-os/UserByOS';
 import TaskSummaryCard from '@/components/sections/dashboards/project/task-summary/TaskSummaryCard';
+import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
+// import { userByOSData } from '@/data/analytics/dashboard';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
 import OrderListContainer from 'components/sections/ecommerce/admin/order-list';
 
@@ -65,7 +68,10 @@ const taskMetrics: TaskMetrics[] = [
 
 const Insights = () => {
   return (
-    <Grid container spacing={3}>
+    <Grid container>
+      <Box sx={{ width: '100%' }}>
+        <PageHeader title="Insights" />
+      </Box>
       {/* Top Row - Widgets */}
       <Box
         sx={{
@@ -85,7 +91,12 @@ const Insights = () => {
         sx={{
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+          gridTemplateColumns: {
+            xs: '1fr',
+            md: '1fr',
+            lg: '1fr 1fr',
+            xl: '1fr 1fr',
+          },
         }}
       >
         <Box
@@ -93,11 +104,9 @@ const Insights = () => {
             height: '100%',
             bgcolor: 'background.paper',
             p: 2,
-            borderLeft: 0,
-            borderTop: 1,
-            borderRight: 1,
-            borderBottom: 1,
+            border: 1,
             borderColor: 'divider',
+            minHeight: '400px', // Adjust as needed
           }}
         >
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
@@ -110,21 +119,20 @@ const Insights = () => {
             height: '100%',
             bgcolor: 'background.paper',
             p: 2,
-            borderLeft: 0,
-            borderTop: 1,
-            borderRight: 1,
-            borderBottom: 1,
+            border: 1,
             borderColor: 'divider',
+            minHeight: '400px', // Adjust as needed
           }}
         >
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Monthly Profit
+            Another Chart
           </Typography>
           <GeneratedRevenueChart sx={{ height: '100%' }} data={monthlyProfitChartData} />
         </Box>
+        {/* <UserByOS data={userByOSData} /> */}
       </Box>
       {/* Bottom Row - Table */}
-      <Box sx={{ p: 2, pt: 0, width: '100%' }}>
+      <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
             Recent Orders

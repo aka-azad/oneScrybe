@@ -5,7 +5,7 @@ import PageBreadcrumb from 'components/sections/common/PageBreadcrumb';
 
 interface PageHeaderProps {
   title: string;
-  breadcrumb: { label: string; url?: string; active?: boolean }[];
+  breadcrumb?: { label: string; url?: string; active?: boolean }[];
   actionComponent?: JSX.Element;
   sx?: SxProps;
 }
@@ -30,7 +30,7 @@ const PageHeader = ({
         }}
       >
         <div>
-          <PageBreadcrumb items={breadcrumb} sx={{ mb: 1 }} />
+          <PageBreadcrumb items={breadcrumb || []} sx={{ mb: 1 }} />
           <Typography variant="h4" sx={[downLg && { fontSize: 'h5.fontSize' }]}>
             {title}
           </Typography>
