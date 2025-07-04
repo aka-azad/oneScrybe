@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
 import { TaskMetrics } from 'types/project';
+import TaskSummaryCard from '@/components/sections/dashboards/project/task-summary/TaskSummaryCard';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
-import TaskSummaryCard from 'components/sections/dashboards/project/task-summary/TaskSummaryCard';
 import OrderListContainer from 'components/sections/ecommerce/admin/order-list';
 
 // Mock data for task summary cards
@@ -64,10 +65,11 @@ const taskMetrics: TaskMetrics[] = [
 
 const Insights = () => {
   return (
-    <Stack spacing={3} sx={{ display: 'grid', gridTemplateRows: 'repeat(3, auto)' }}>
+    <Grid container spacing={3}>
       {/* Top Row - Widgets */}
       <Box
         sx={{
+          width: '100%',
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: 'repeat(4, 1fr)' },
         }}
@@ -78,10 +80,10 @@ const Insights = () => {
           </Box>
         ))}
       </Box>
-
       {/* Middle Row - Charts */}
       <Box
         sx={{
+          width: '100%',
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
         }}
@@ -91,8 +93,10 @@ const Insights = () => {
             height: '100%',
             bgcolor: 'background.paper',
             p: 2,
-            border: 1,
-            borderRight: 0,
+            borderLeft: 0,
+            borderTop: 1,
+            borderRight: 1,
+            borderBottom: 1,
             borderColor: 'divider',
           }}
         >
@@ -106,7 +110,10 @@ const Insights = () => {
             height: '100%',
             bgcolor: 'background.paper',
             p: 2,
-            border: 1,
+            borderLeft: 0,
+            borderTop: 1,
+            borderRight: 1,
+            borderBottom: 1,
             borderColor: 'divider',
           }}
         >
@@ -116,15 +123,16 @@ const Insights = () => {
           <GeneratedRevenueChart sx={{ height: '100%' }} data={monthlyProfitChartData} />
         </Box>
       </Box>
-
       {/* Bottom Row - Table */}
-      <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, m: 2 }}>
-        <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-          Recent Orders
-        </Typography>
-        <OrderListContainer />
+      <Box sx={{ p: 2, pt: 0, width: '100%' }}>
+        <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+            Recent Orders
+          </Typography>
+          <OrderListContainer />
+        </Box>
       </Box>
-    </Stack>
+    </Grid>
   );
 };
 
