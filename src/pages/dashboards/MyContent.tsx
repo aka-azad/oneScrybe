@@ -1,21 +1,18 @@
 import { useState } from 'react';
 import { Box, Paper, Stack } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import RecentProject01 from 'assets/images/kanban/board_images/1.webp';
 import RecentProject02 from 'assets/images/kanban/board_images/2.webp';
 import RecentProject03 from 'assets/images/kanban/board_images/3.webp';
 import RecentProject04 from 'assets/images/kanban/board_images/4.webp';
 import RecentProject05 from 'assets/images/kanban/board_images/5.webp';
 import RecentProject06 from 'assets/images/kanban/board_images/6.webp';
-import ThumbnailSlider from '@/components/myComponents/ThumbnailSlider';
+import PageHeaderAction from '@/components/myComponents/PageHeaderAction';
+import Thumbnails from '@/components/myComponents/Thumbnails';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 import ProductListContainer from '@/components/sections/ecommerce/admin/product-list';
 import { users } from '@/data/users';
 
-const boards = [
+export const boards = [
   {
     id: 1,
     image: RecentProject01,
@@ -169,13 +166,10 @@ const boards = [
 ];
 interface Filter {
   field?: string;
-  value?: string | number;
+  value?: string;
 }
 export default function MyContent() {
-  const [filter, setFilter] = useState<Filter | null>(null);
-  const handleChange = (event: SelectChangeEvent) => {
-    setFilter({ field: 'time_duration', value: event.target.value as string });
-  };
+  const [filter, setFilter] = useState<Filter>({ field: 'time_duration', value: 'All' });
 
   return (
     <Stack direction="column" height={1}>
@@ -184,27 +178,24 @@ export default function MyContent() {
           title="My Content"
           actionComponent={
             <Box sx={{ minWidth: 200 }}>
-              <FormControl fullWidth>
-                <InputLabel id="select-time-duration">Time Duration</InputLabel>
-                <Select
-                  labelId="select-time-duration"
-                  id="select-time-duration"
-                  value={filter?.value}
-                  label="Time Duration"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={'current'}>Current</MenuItem>
-                  <MenuItem value={'past_week'}>Past Week</MenuItem>
-                  <MenuItem value={'past_month'}>Past Month</MenuItem>
-                </Select>
-              </FormControl>
+              <PageHeaderAction
+                handleChange={(value: string) => setFilter({ field: 'time_duration', value })}
+                filter={filter}
+                selectOptions={[
+                  { value: 'All', label: 'All' },
+                  { value: 'Current', label: 'Current' },
+                  { value: 'Past Week', label: 'Past Week' },
+                  { value: 'Past Month', label: 'Past Month' },
+                ]}
+                showSearch={false}
+              />
             </Box>
           }
         />
       </Box>
       <Paper sx={{ flex: 1, p: { xs: 2, md: 3.5 } }}>
         <Box>
-          <ThumbnailSlider title="Recent Projects" items={boards} />
+          <Thumbnails title={filter.value || 'All'} items={boards} />
         </Box>
         <ProductListContainer />
       </Paper>

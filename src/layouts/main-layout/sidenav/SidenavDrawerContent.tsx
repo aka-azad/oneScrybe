@@ -4,7 +4,7 @@ import { Divider, IconButton, ListSubheader } from '@mui/material';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Toolbar from '@mui/material/Toolbar';
-import { useRole } from 'contexts/RoleContext';
+// import { useRole } from 'contexts/RoleContext';
 import DocSearch from 'layouts/main-layout/sidenav/doc-search/DocSearch';
 import { useSettingsContext } from 'providers/SettingsProvider';
 import sitemap from 'routes/sitemap';
@@ -24,31 +24,31 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
     config: { sidenavCollapsed, openNavbarDrawer, navigationMenuType },
     setConfig,
   } = useSettingsContext();
-  const { role } = useRole();
+  // const { role } = useRole();
 
   const { sidenavAppbarVariant } = useNavContext();
   // Filter items based on role
-  const filteredSitemap = useMemo(() => {
-    const filterByRole = (sections: typeof sitemap): typeof sitemap => {
-      return sections
-        .map((section) => {
-          // Filter section items by role
-          const filteredItems =
-            section.items?.filter((item) => {
-              return !item.roles || item.roles.includes(role || 'subscriber');
-            }) || [];
+  // const filteredSitemap = useMemo(() => {
+  //   const filterByRole = (sections: typeof sitemap): typeof sitemap => {
+  //     return sections
+  //       .map((section) => {
+  //         // Filter section items by role
+  //         const filteredItems =
+  //           section.items?.filter((item) => {
+  //             return !item.roles || item.roles.includes(role || 'subscriber');
+  //           }) || [];
 
-          // Return a new section with filtered items
-          return {
-            ...section,
-            items: filteredItems,
-          };
-        })
-        .filter((section) => section.items && section.items.length > 0); // Remove empty sections
-    };
+  //         // Return a new section with filtered items
+  //         return {
+  //           ...section,
+  //           items: filteredItems,
+  //         };
+  //       })
+  //       .filter((section) => section.items && section.items.length > 0); // Remove empty sections
+  //   };
 
-    return filterByRole(sitemap);
-  }, [role, sitemap]);
+  //   return filterByRole(sitemap);
+  // }, [role, sitemap]);
 
   const expanded = useMemo(
     () => variant === 'temporary' || (variant === 'permanent' && !sidenavCollapsed),
@@ -108,7 +108,7 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
               },
             ]}
           >
-            {filteredSitemap.map((menu, index) => (
+            {sitemap.map((menu, index) => (
               <Box key={menu.id}>
                 {menu.subheader === 'Docs' && !sidenavCollapsed && (
                   <>
@@ -120,7 +120,7 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
                   dense
                   key={menu.id}
                   sx={{
-                    mb: index !== filteredSitemap.length - 1 ? 3 : 0,
+                    mb: index !== sitemap.length - 1 ? 3 : 0,
                     pb: 0,
                     display: 'flex',
                     flexDirection: 'column',

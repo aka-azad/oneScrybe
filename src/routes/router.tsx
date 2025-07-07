@@ -14,6 +14,7 @@ import { RoleGuard } from '@/components/guard/RoleGuard';
 import ExploreMusic from '@/pages/dashboards/ExploreMusic';
 import Favorites from '@/pages/dashboards/Favorites';
 import Help from '@/pages/dashboards/Help';
+import HelpForCreator from '@/pages/dashboards/HelpForCreator';
 import Home from '@/pages/dashboards/Home';
 // import PageLoader from 'components/loading/PageLoader';
 import AllFiles from 'components/sections/file-manager/main/all-files';
@@ -139,7 +140,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.analytics,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Analytics />
               </RoleGuard>
             ),
@@ -147,7 +148,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.competitors,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Competitors />
               </RoleGuard>
             ),
@@ -155,7 +156,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.insights,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Insights />
               </RoleGuard>
             ),
@@ -163,31 +164,35 @@ export const routes: RouteObject[] = [
           {
             path: paths.myContent,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <MyContent />
               </RoleGuard>
             ),
           },
           {
             path: paths.eCommerce,
-            element: (
-              <RoleGuard allowedRole="subscriber">
-                <ECommerce />
-              </RoleGuard>
-            ),
+            element: <ECommerce />,
           },
           {
             path: paths.help,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Help />
+              </RoleGuard>
+            ),
+          },
+          {
+            path: paths.helpForCreator,
+            element: (
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
+                <HelpForCreator />
               </RoleGuard>
             ),
           },
           {
             path: paths.favorites,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Favorites />
               </RoleGuard>
             ),
@@ -195,7 +200,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.exploreMusic,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <ExploreMusic />
               </RoleGuard>
             ),
@@ -203,7 +208,7 @@ export const routes: RouteObject[] = [
           {
             index: true,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Home />
               </RoleGuard>
             ),
@@ -211,7 +216,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.project,
             element: (
-              <RoleGuard allowedRole="creator">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <ProjectManagement />
               </RoleGuard>
             ),
@@ -219,7 +224,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.crm,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <CRM />
               </RoleGuard>
             ),
@@ -227,7 +232,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.analytics1,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <Analytics1 />
               </RoleGuard>
             ),
@@ -235,7 +240,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.hrm,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <HRM />
               </RoleGuard>
             ),
@@ -243,7 +248,7 @@ export const routes: RouteObject[] = [
           {
             path: paths.timeTracker,
             element: (
-              <RoleGuard allowedRole="subscriber">
+              <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <TimeTracker />
               </RoleGuard>
             ),

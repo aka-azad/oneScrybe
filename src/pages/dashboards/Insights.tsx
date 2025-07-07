@@ -68,7 +68,7 @@ const taskMetrics: TaskMetrics[] = [
 
 const Insights = () => {
   return (
-    <Grid container>
+    <>
       <Box sx={{ width: '100%' }}>
         <PageHeader title="Insights" />
       </Box>
@@ -87,50 +87,56 @@ const Insights = () => {
         ))}
       </Box>
       {/* Middle Row - Charts */}
-      <Box
-        sx={{
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: '1fr',
-            md: '1fr',
-            lg: '1fr 1fr',
-            xl: '1fr 1fr',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            height: '100%',
-            bgcolor: 'background.paper',
-            p: 2,
-            border: 1,
-            borderColor: 'divider',
-            minHeight: '400px', // Adjust as needed
-          }}
-        >
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Generated Revenue
-          </Typography>
-          <GeneratedRevenueChart sx={{ height: '100%' }} data={generatedRevenueData} />
-        </Box>
-        <Box
-          sx={{
-            height: '100%',
-            bgcolor: 'background.paper',
-            p: 2,
-            border: 1,
-            borderColor: 'divider',
-            minHeight: '400px', // Adjust as needed
-          }}
-        >
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Another Chart
-          </Typography>
-          <GeneratedRevenueChart sx={{ height: '100%' }} data={monthlyProfitChartData} />
-        </Box>
-        {/* <UserByOS data={userByOSData} /> */}
-      </Box>
+      <Grid container size={{ xs: 12, xl: 8 }}>
+        <Grid container size={12}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Box
+              sx={{
+                height: '100%',
+                bgcolor: 'background.paper',
+                p: 2,
+                borderLeft: 0,
+                borderTop: 1,
+                borderRight: 1,
+                borderBottom: 1,
+                borderColor: 'divider',
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+                Generated Revenue
+              </Typography>
+              <GeneratedRevenueChart
+                sx={{ minHeight: '200px', width: '100%' }}
+                data={generatedRevenueData}
+              />
+            </Box>{' '}
+          </Grid>
+
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Box
+              sx={{
+                height: '100%',
+                bgcolor: 'background.paper',
+                p: 2,
+                borderLeft: 0,
+                borderTop: 1,
+                borderRight: 1,
+                borderBottom: 1,
+                borderColor: 'divider',
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+                Monthly Profit
+              </Typography>
+              <GeneratedRevenueChart
+                sx={{ minHeight: '200px', width: '100%' }}
+                data={monthlyProfitChartData}
+              />
+            </Box>{' '}
+          </Grid>
+        </Grid>
+      </Grid>
+
       {/* Bottom Row - Table */}
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
@@ -140,7 +146,7 @@ const Insights = () => {
           <OrderListContainer />
         </Box>
       </Box>
-    </Grid>
+    </>
   );
 };
 

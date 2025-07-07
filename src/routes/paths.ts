@@ -37,8 +37,9 @@ const paths = {
   competitors: `/${rootPaths.creatorRoot}/competitors`,
   insights: `/${rootPaths.creatorRoot}/insights`,
   myContent: `/${rootPaths.creatorRoot}/my-content`,
+  helpForCreator: `/${rootPaths.creatorRoot}/help`,
 
-  eCommerce: `/${rootPaths.subscriberRoot}/e-commerce`,
+  eCommerce: `/${rootPaths.dashboardRoot}/e-commerce`,
 
   help: `/${rootPaths.subscriberRoot}/help`,
   favorites: `/${rootPaths.subscriberRoot}/favorites`,

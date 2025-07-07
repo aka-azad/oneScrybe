@@ -8,7 +8,7 @@ interface TaskSummaryCardProps {
 }
 const TaskSummaryCard = ({ task }: TaskSummaryCardProps) => {
   return (
-    <Paper sx={{ flex: 1, px: { xs: 3, md: 5 }, py: 3 }}>
+    <Paper sx={{ flex: 1, px: { xs: 2, md: 2 }, py: 2 }}>
       <Stack
         spacing={2}
         direction={{

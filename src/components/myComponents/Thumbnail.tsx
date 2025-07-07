@@ -3,7 +3,6 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/m
 import { Board } from 'data/kanban/boards';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import paths from 'routes/paths';
 import BoardItemMenu from '../sections/kanban/boards/boards-slider/BoardItemMenu';
 
 dayjs.extend(relativeTime);
@@ -13,7 +12,7 @@ interface BoardItemProps {
   size?: 'small' | 'medium';
 }
 
-const BoardItem = ({ board, size }: BoardItemProps) => {
+const Thumbnail = ({ board, size }: BoardItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { image, name, lastViewAt } = board;
 
@@ -32,14 +31,14 @@ const BoardItem = ({ board, size }: BoardItemProps) => {
     >
       <BoardItemMenu isHovered={isHovered} />
 
-      <CardActionArea href={paths.kanban}>
+      <CardActionArea href="#">
         <CardMedia
           image={image}
           sx={{
             position: 'relative',
             display: 'inline-block',
-            height: 175,
-            width: size === 'small' ? 286 : 250,
+            height: 150,
+            width: size === 'small' ? 240 : 180,
             borderRadius: 4,
             overflow: 'hidden',
 
@@ -93,4 +92,4 @@ const BoardItem = ({ board, size }: BoardItemProps) => {
   );
 };
 
-export default BoardItem;
+export default Thumbnail;
