@@ -38,10 +38,17 @@ const paths = {
   insights: `/${rootPaths.creatorRoot}/insights`,
   myContent: `/${rootPaths.creatorRoot}/my-content`,
   helpForCreator: `/${rootPaths.creatorRoot}/help`,
+  faqForCreator: `/${rootPaths.creatorRoot}/help/faq`,
+  contactUsForCreator: `/${rootPaths.creatorRoot}/help/contact-us`,
+  tutorialsForCreator: `/${rootPaths.creatorRoot}/help/tutorials`,
 
   eCommerce: `/${rootPaths.dashboardRoot}/e-commerce`,
 
   help: `/${rootPaths.subscriberRoot}/help`,
+  helpCenter: `/${rootPaths.subscriberRoot}/help/help-center`,
+  faqForSubscriber: `/${rootPaths.subscriberRoot}/help/help-center/faq`,
+  contactUsForSubscriber: `/${rootPaths.subscriberRoot}/help/help-center/contact-us`,
+  tutorialsForSubscriber: `/${rootPaths.subscriberRoot}/help/help-center/tutorials`,
   favorites: `/${rootPaths.subscriberRoot}/favorites`,
   exploreMusic: `/${rootPaths.subscriberRoot}/explore-music`,
   home: `/${rootPaths.subscriberRoot}/home`,

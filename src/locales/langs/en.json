@@ -1,6 +1,11 @@
 {
   "homepage": "Homepage",
   "apps": "Apps",
+  "help_for_creator": "Help for Creator",
+  "help_center": "Help Center",
+  "help_for_subscriber": "Help for Subscriber",
+  "contact_us": "Contact Us",
+  "tutorials": "Tutorials",
   "e_commerce": "E-commerce",
   "project": "Project",
   "analytics1": "Analytics1",
