@@ -193,7 +193,7 @@ export default function MyContent() {
           }
         />
       </Box>
-      <Paper sx={{ flex: 1, p: { xs: 2, md: 3.5 } }}>
+      <Paper sx={{ flex: 1, px: { xs: 2, md: 3.5 } }}>
         <Box>
           <Thumbnails title={filter.value || 'All'} items={boards} />
         </Box>
