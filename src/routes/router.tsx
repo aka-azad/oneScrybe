@@ -13,7 +13,7 @@ import Page404 from 'pages/errors/Page404';
 import { RoleGuard } from '@/components/guard/RoleGuard';
 import ExploreMusic from '@/pages/dashboards/ExploreMusic';
 import Favorites from '@/pages/dashboards/Favorites';
-import Help from '@/pages/dashboards/Help';
+// import Help from '@/pages/dashboards/Help';
 import HelpForCreator from '@/pages/dashboards/HelpForCreator';
 import Home from '@/pages/dashboards/Home';
 // import PageLoader from 'components/loading/PageLoader';
@@ -173,42 +173,8 @@ export const routes: RouteObject[] = [
           //   path: paths.eCommerce,
           //   element: <ECommerce />,
           // },
+
           {
-            path: paths.help,
-            element: (
-              <RoleGuard allowedRole={['subscriber', 'creator']}>
-                <Help />
-              </RoleGuard>
-            ),
-            children: [
-              {
-                path: paths.faqForSubscriber,
-                element: (
-                  <RoleGuard allowedRole={['subscriber', 'creator']}>
-                    <Help />
-                  </RoleGuard>
-                ),
-              },
-              {
-                path: paths.contactUsForSubscriber,
-                element: (
-                  <RoleGuard allowedRole={['subscriber', 'creator']}>
-                    <Help />
-                  </RoleGuard>
-                ),
-              },
-              {
-                path: paths.tutorialsForSubscriber,
-                element: (
-                  <RoleGuard allowedRole={['subscriber', 'creator']}>
-                    <Help />
-                  </RoleGuard>
-                ),
-              },
-            ],
-          },
-          {
-            path: paths.helpForCreator,
             element: (
               <RoleGuard allowedRole={['subscriber', 'creator']}>
                 <HelpForCreator />
@@ -216,7 +182,7 @@ export const routes: RouteObject[] = [
             ),
             children: [
               {
-                path: paths.faqForCreator,
+                path: paths.faq,
                 element: (
                   <RoleGuard allowedRole={['subscriber', 'creator']}>
                     <HelpForCreator />
@@ -224,7 +190,7 @@ export const routes: RouteObject[] = [
                 ),
               },
               {
-                path: paths.contactUsForCreator,
+                path: paths.contactUs,
                 element: (
                   <RoleGuard allowedRole={['subscriber', 'creator']}>
                     <HelpForCreator />
@@ -232,7 +198,7 @@ export const routes: RouteObject[] = [
                 ),
               },
               {
-                path: paths.tutorialsForCreator,
+                path: paths.tutorials,
                 element: (
                   <RoleGuard allowedRole={['subscriber', 'creator']}>
                     <HelpForCreator />

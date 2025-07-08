@@ -3,6 +3,7 @@ import docRoutePaths from 'docs/routes/docPaths';
 export const rootPaths = {
   root: '/',
   creatorRoot: 'creator',
+  helpRoot: 'help',
   subscriberRoot: 'subscriber',
   dashboardRoot: 'dashboard',
   pagesRoot: 'pages',
@@ -37,18 +38,12 @@ const paths = {
   competitors: `/${rootPaths.creatorRoot}/competitors`,
   insights: `/${rootPaths.creatorRoot}/insights`,
   myContent: `/${rootPaths.creatorRoot}/my-content`,
-  helpForCreator: `/${rootPaths.creatorRoot}/help`,
-  faqForCreator: `/${rootPaths.creatorRoot}/help/faq`,
-  contactUsForCreator: `/${rootPaths.creatorRoot}/help/contact-us`,
-  tutorialsForCreator: `/${rootPaths.creatorRoot}/help/tutorials`,
 
   eCommerce: `/${rootPaths.dashboardRoot}/e-commerce`,
 
-  help: `/${rootPaths.subscriberRoot}/help`,
-  helpCenter: `/${rootPaths.subscriberRoot}/help`,
-  faqForSubscriber: `/${rootPaths.subscriberRoot}/help/faq`,
-  contactUsForSubscriber: `/${rootPaths.subscriberRoot}/help/contact-us`,
-  tutorialsForSubscriber: `/${rootPaths.subscriberRoot}/help/tutorials`,
+  faq: `/${rootPaths.helpRoot}/faq`,
+  contactUs: `/${rootPaths.helpRoot}/contact-us`,
+  tutorials: `/${rootPaths.helpRoot}/tutorials`,
   favorites: `/${rootPaths.subscriberRoot}/favorites`,
   exploreMusic: `/${rootPaths.subscriberRoot}/explore-music`,
   home: `/${rootPaths.subscriberRoot}/home`,
@@ -72,7 +67,7 @@ const paths = {
   pricingTable: `/${rootPaths.pricingRoot}/table`,
 
   account: `/account`,
-  faq: `/faq`,
+  // faq: `/faq`,
   comingSoon: `/coming-soon`,
   404: `/${rootPaths.errorRoot}/404`,
 

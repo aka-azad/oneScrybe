@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Stack, SxProps } from '@mui/material';
-import LanguageMenu from './LanguageMenu';
+// import LanguageMenu from './LanguageMenu';
 import NotificationMenu from './NotificationMenu';
 import ProfileMenu from './ProfileMenu';
 // import RoleToggler from './RoleToggler';
@@ -24,7 +24,7 @@ const AppbarActionItems = ({ type = 'default', sx, searchComponent }: AppbarActi
       }}
     >
       {searchComponent}
-      <LanguageMenu type={type} />
+      {/* <LanguageMenu type={type} /> */}
       {/* <RoleToggler type={type} /> */}
       <ThemeToggler type={type} />
       <NotificationMenu type={type} />
