@@ -17,7 +17,7 @@ export default function Competitors() {
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Competitors
+            Competitors 1
           </Typography>
           <TableForCompetitors1 />
         </Box>
@@ -25,7 +25,7 @@ export default function Competitors() {
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Competitors
+            Competitors 2
           </Typography>
           <TableForCompetitors2 />
         </Box>

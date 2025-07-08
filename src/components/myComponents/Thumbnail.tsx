@@ -36,7 +36,8 @@ const Thumbnail = ({ board }: BoardItemProps) => {
           sx={{
             position: 'relative',
             display: 'inline-block',
-            height: { xs: 220, sm: 180, md: 200, lg: 220 },
+            aspectRatio: '4/3',
+            // height: { xs: 220, sm: 180, md: 200, lg: 220 },
             width: '100%',
             borderRadius: 4,
             overflow: 'hidden',
