@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import RecentProject01 from 'assets/images/kanban/board_images/1.webp';
 import RecentProject02 from 'assets/images/kanban/board_images/2.webp';
 import RecentProject03 from 'assets/images/kanban/board_images/3.webp';
@@ -8,8 +8,8 @@ import RecentProject05 from 'assets/images/kanban/board_images/5.webp';
 import RecentProject06 from 'assets/images/kanban/board_images/6.webp';
 import PageHeaderAction from '@/components/myComponents/PageHeaderAction';
 import Thumbnails from '@/components/myComponents/Thumbnails';
+import TableForMyContent from '@/components/myComponents/tableContainers/TableForMyContent';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
-import ProductListContainer from '@/components/sections/ecommerce/admin/product-list';
 import { users } from '@/data/users';
 
 export const boards = [
@@ -193,11 +193,14 @@ export default function MyContent() {
           }
         />
       </Box>
-      <Paper sx={{ flex: 1, px: { xs: 2, md: 3.5 } }}>
+      <Paper sx={{ flex: 1, px: { xs: 2, md: 3.5 }, pb: 2 }}>
         <Box>
           <Thumbnails title={filter.value || 'All'} items={boards} />
         </Box>
-        <ProductListContainer />
+        <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+          Table For My Content
+        </Typography>
+        <TableForMyContent />
       </Paper>
     </Stack>
   );

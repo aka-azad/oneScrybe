@@ -3,12 +3,12 @@ import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
 import { TaskMetrics } from 'types/project';
+import TableForInsights from '@/components/myComponents/tableContainers/TableForInsights';
 // import UserByOS from '@/components/sections/dashboards/analytics/user-by-os/UserByOS';
 import TaskSummaryCard from '@/components/sections/dashboards/project/task-summary/TaskSummaryCard';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 // import { userByOSData } from '@/data/analytics/dashboard';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
-import OrderListContainer from 'components/sections/ecommerce/admin/order-list';
 
 // Mock data for task summary cards
 const taskMetrics: TaskMetrics[] = [
@@ -141,9 +141,9 @@ const Insights = () => {
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Recent Orders
+            Table For Insights
           </Typography>
-          <OrderListContainer />
+          <TableForInsights />
         </Box>
       </Box>
     </>

@@ -63,7 +63,6 @@ const sitemap: MenuItem[] = [
       {
         name: 'Help Center',
         key: 'help',
-        path: paths.faqForSubscriber,
         pathName: 'help/faq-for-subscriber',
         icon: 'material-symbols:help-outline',
         active: true,
@@ -145,7 +144,6 @@ const sitemap: MenuItem[] = [
       {
         name: 'Help Center',
         key: 'help_center',
-        path: paths.faqForCreator,
         pathName: 'help/faq-for-creator',
         icon: 'material-symbols:help-outline',
         active: true,

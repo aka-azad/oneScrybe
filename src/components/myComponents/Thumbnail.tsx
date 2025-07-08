@@ -9,10 +9,9 @@ dayjs.extend(relativeTime);
 
 interface BoardItemProps {
   board: Board;
-  size?: 'small' | 'medium';
 }
 
-const Thumbnail = ({ board, size }: BoardItemProps) => {
+const Thumbnail = ({ board }: BoardItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { image, name, lastViewAt } = board;
 
@@ -37,8 +36,8 @@ const Thumbnail = ({ board, size }: BoardItemProps) => {
           sx={{
             position: 'relative',
             display: 'inline-block',
-            height: 150,
-            width: size === 'small' ? 240 : 180,
+            height: { xs: 220, sm: 180, md: 200, lg: 220 },
+            width: '100%',
             borderRadius: 4,
             overflow: 'hidden',
 
@@ -66,26 +65,6 @@ const Thumbnail = ({ board, size }: BoardItemProps) => {
           >
             {lastViewAt}
           </Typography>
-          {/* <AvatarGroup
-            max={3}
-            color="primary"
-            sx={{
-              justifyContent: 'flex-end',
-              [`& .${avatarClasses.root}`]: {
-                width: size === 'small' ? 24 : 32,
-                height: size === 'small' ? 24 : 32,
-                fontWeight: 600,
-                fontSize: 12,
-                bgcolor: 'primary.main',
-              },
-            }}
-          >
-            {assignee.map((user) => (
-              <Tooltip title={user.name} key={user.name}>
-                <Avatar alt={user.name} src={user.avatar} />
-              </Tooltip>
-            ))}
-          </AvatarGroup> */}
         </CardContent>
       </CardActionArea>
     </Card>

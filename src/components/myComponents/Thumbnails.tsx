@@ -1,14 +1,13 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { Board } from 'data/kanban/boards';
 import Thumbnail from './Thumbnail';
 
 interface ThumbnailSliderProps {
   title: string;
   items: Board[];
-  size?: 'small' | 'medium';
 }
 
-const Thumbnails = ({ title, items, size = 'small' }: ThumbnailSliderProps) => {
+const Thumbnails = ({ title, items }: ThumbnailSliderProps) => {
   return (
     <Box sx={{ py: 4 }}>
       <Box sx={{ mb: 3 }}>
@@ -16,16 +15,13 @@ const Thumbnails = ({ title, items, size = 'small' }: ThumbnailSliderProps) => {
           {title}
         </Typography>
       </Box>
-      <Box
-        display="grid"
-        sx={{ gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 2 }}
-      >
+      <Grid spacing={2} columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }} container>
         {items.map((item) => (
-          <Box key={item.id} sx={{ width: 240 }}>
-            <Thumbnail board={item} size={size} />
-          </Box>
+          <Grid size={1} key={item.id}>
+            <Thumbnail board={item} />
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   );
 };

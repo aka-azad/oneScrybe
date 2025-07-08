@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
+import TableForAnalytics from '@/components/myComponents/tableContainers/TableForAnalytics';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
-import OrderListContainer from 'components/sections/ecommerce/admin/order-list';
 
 export default function Analytics() {
   return (
@@ -67,9 +67,9 @@ export default function Analytics() {
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Recent Orders
+            Table For Analytics
           </Typography>
-          <OrderListContainer />
+          <TableForAnalytics />
         </Box>
       </Box>
     </>

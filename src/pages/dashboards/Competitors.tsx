@@ -2,13 +2,14 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
+import TableForCompetitors1 from '@/components/myComponents/tableContainers/TableForCompetitors1';
+import TableForCompetitors2 from '@/components/myComponents/tableContainers/TableForCompetitors2';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
-import OrderListContainer from 'components/sections/ecommerce/admin/order-list';
 
 export default function Competitors() {
   return (
-    <Grid container>
+    <>
       <Box sx={{ width: '100%' }}>
         <PageHeader title="Competitors" />
       </Box>
@@ -18,7 +19,7 @@ export default function Competitors() {
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
             Competitors
           </Typography>
-          <OrderListContainer />
+          <TableForCompetitors1 />
         </Box>
       </Box>
       <Box sx={{ p: 2, width: '100%' }}>
@@ -26,53 +27,54 @@ export default function Competitors() {
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
             Competitors
           </Typography>
-          <OrderListContainer />
+          <TableForCompetitors2 />
         </Box>
       </Box>
       {/* Table */}
 
-      <Box
-        sx={{
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
-        }}
-      >
-        <Box
-          sx={{
-            height: '100%',
-            bgcolor: 'background.paper',
-            p: 2,
-            borderLeft: 0,
-            borderTop: 1,
-            borderRight: 1,
-            borderBottom: 1,
-            borderColor: 'divider',
-          }}
-        >
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Competitors
-          </Typography>
-          <GeneratedRevenueChart sx={{ height: '100%' }} data={generatedRevenueData} />
-        </Box>
-        <Box
-          sx={{
-            height: '100%',
-            bgcolor: 'background.paper',
-            p: 2,
-            borderLeft: 0,
-            borderTop: 1,
-            borderRight: 1,
-            borderBottom: 1,
-            borderColor: 'divider',
-          }}
-        >
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Competitors
-          </Typography>
-          <GeneratedRevenueChart sx={{ height: '100%' }} data={monthlyProfitChartData} />
-        </Box>
-      </Box>
-    </Grid>
+      <Grid container size={{ xs: 12, xl: 8 }}>
+        <Grid container size={12}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Box
+              sx={{
+                height: '100%',
+                bgcolor: 'background.paper',
+                p: 2,
+                borderLeft: 0,
+                borderTop: 1,
+                borderRight: 1,
+                borderBottom: 1,
+                borderColor: 'divider',
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+                Generated Revenue
+              </Typography>
+              <GeneratedRevenueChart sx={{ height: '100%' }} data={generatedRevenueData} />
+            </Box>
+          </Grid>
+
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Box
+              sx={{
+                height: '100%',
+                bgcolor: 'background.paper',
+                p: 2,
+                borderLeft: 0,
+                borderTop: 1,
+                borderRight: 1,
+                borderBottom: 1,
+                borderColor: 'divider',
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+                Monthly Profit
+              </Typography>
+              <GeneratedRevenueChart sx={{ height: '100%' }} data={monthlyProfitChartData} />
+            </Box>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   );
 }
