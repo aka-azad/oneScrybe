@@ -1,12 +1,12 @@
 import { RefObject, useMemo } from 'react';
-import { Avatar, Box, Chip, ChipOwnProps, Link, Stack } from '@mui/material';
+import { Box, Chip, ChipOwnProps, Stack, Typography } from '@mui/material';
 import { DataGrid, GRID_CHECKBOX_SELECTION_COL_DEF, GridColDef } from '@mui/x-data-grid';
 import { GridApiCommunity } from '@mui/x-data-grid/internals';
 import { orderListAdmin } from 'data/e-commerce/orders';
 import useNumberFormat from 'hooks/useNumberFormat';
 import { OrderListAdmin } from 'types/ecommerce';
-import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
-import DashboardMenu from 'components/common/DashboardMenu';
+// import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
+// import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
 
 const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
@@ -31,17 +31,17 @@ const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
       break;
   }
 };
-const getShippingMethodBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'standard':
-      return 'primary';
-    case 'express':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
+// const getShippingMethodBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'standard':
+//       return 'primary';
+//     case 'express':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
 
 const defaultPageSize = 8;
 
@@ -65,9 +65,9 @@ const CompetitorsTableData2 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
         sortable: false,
         filterable: false,
         minWidth: 144,
-        renderCell: (params) => {
-          return <OrderDetailsPopper params={params} />;
-        },
+        // renderCell: (params) => {
+        //   return <OrderDetailsPopper params={params} />;
+        // },
       },
       {
         field: 'date',
@@ -88,14 +88,14 @@ const CompetitorsTableData2 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
                 alignItems: 'center',
               }}
             >
-              <Avatar
+              {/* <Avatar
                 alt={params.row.customer.name}
                 src={params.row.customer.avatar}
                 sx={{ width: 32, height: 32 }}
-              />
-              <Link variant="subtitle2" href="#!" sx={{ fontWeight: 400 }}>
+              /> */}
+              <Typography variant="subtitle2" sx={{ fontWeight: 400 }}>
                 {params.row.customer.name}
-              </Link>
+              </Typography>
             </Stack>
           );
         },
@@ -130,22 +130,22 @@ const CompetitorsTableData2 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
           );
         },
       },
-      {
-        field: 'shippingMethod',
-        headerName: 'Shipping method',
-        minWidth: 152,
-        flex: 1,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.shippingMethod}
-              variant="soft"
-              color={getShippingMethodBadgeColor(params.row.shippingMethod)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
+      // {
+      //   field: 'shippingMethod',
+      //   headerName: 'Shipping method',
+      //   minWidth: 152,
+      //   flex: 1,
+      //   renderCell: (params) => {
+      //     return (
+      //       <Chip
+      //         label={params.row.shippingMethod}
+      //         variant="soft"
+      //         color={getShippingMethodBadgeColor(params.row.shippingMethod)}
+      //         sx={{ textTransform: 'capitalize' }}
+      //       />
+      //     );
+      //   },
+      // },
       {
         field: 'total',
         headerName: 'Total',
@@ -162,16 +162,16 @@ const CompetitorsTableData2 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
           );
         },
       },
-      {
-        field: 'action',
-        headerName: '',
-        filterable: false,
-        sortable: false,
-        width: 60,
-        align: 'right',
-        headerAlign: 'right',
-        renderCell: () => <DashboardMenu />,
-      },
+      // {
+      //   field: 'action',
+      //   headerName: '',
+      //   filterable: false,
+      //   sortable: false,
+      //   width: 60,
+      //   align: 'right',
+      //   headerAlign: 'right',
+      //   renderCell: () => <DashboardMenu />,
+      // },
     ],
     [currencyFormat],
   );
@@ -190,7 +190,7 @@ const CompetitorsTableData2 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
             },
           },
         }}
-        checkboxSelection
+        // checkboxSelection
         slots={{
           basePagination: (props) => <DataGridPagination showFullPagination {...props} />,
         }}

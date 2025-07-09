@@ -1,25 +1,25 @@
 import { RefObject, useMemo } from 'react';
 import { Avatar, Box, Chip, ChipOwnProps, Link, Stack } from '@mui/material';
-import { DataGrid, GRID_CHECKBOX_SELECTION_COL_DEF, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { GridApiCommunity } from '@mui/x-data-grid/internals';
 import { orderListAdmin } from 'data/e-commerce/orders';
 import useNumberFormat from 'hooks/useNumberFormat';
 import { OrderListAdmin } from 'types/ecommerce';
-import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
+// import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
 import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
 
-const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'paid':
-      return 'success';
-    case 'due':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
+// const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'paid':
+//       return 'success';
+//     case 'due':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
 const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
   switch (val) {
     case 'fulfilled':
@@ -55,19 +55,19 @@ const CompetitorsTableData1 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
 
   const columns: GridColDef<OrderListAdmin>[] = useMemo(
     () => [
-      {
-        ...GRID_CHECKBOX_SELECTION_COL_DEF,
-        width: 64,
-      },
+      // {
+      //   ...GRID_CHECKBOX_SELECTION_COL_DEF,
+      //   width: 64,
+      // },
       {
         field: 'id',
         headerName: 'Order',
         sortable: false,
         filterable: false,
         minWidth: 144,
-        renderCell: (params) => {
-          return <OrderDetailsPopper params={params} />;
-        },
+        // renderCell: (params) => {
+        //   return <OrderDetailsPopper params={params} />;
+        // },
       },
       {
         field: 'date',
@@ -100,21 +100,21 @@ const CompetitorsTableData1 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
           );
         },
       },
-      {
-        field: 'paymentStatus',
-        headerName: 'Payment status',
-        minWidth: 152,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.paymentStatus}
-              variant="soft"
-              color={getPaymentStatusBadgeColor(params.row.paymentStatus)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
+      // {
+      //   field: 'paymentStatus',
+      //   headerName: 'Payment status',
+      //   minWidth: 152,
+      //   renderCell: (params) => {
+      //     return (
+      //       <Chip
+      //         label={params.row.paymentStatus}
+      //         variant="soft"
+      //         color={getPaymentStatusBadgeColor(params.row.paymentStatus)}
+      //         sx={{ textTransform: 'capitalize' }}
+      //       />
+      //     );
+      //   },
+      // },
       {
         field: 'fulfillmentStatus',
         headerName: 'Fulfillment status',
@@ -190,7 +190,7 @@ const CompetitorsTableData1 = ({ apiRef, filterButtonEl }: CompetitorsTableProps
             },
           },
         }}
-        checkboxSelection
+        // checkboxSelection
         slots={{
           basePagination: (props) => <DataGridPagination showFullPagination {...props} />,
         }}

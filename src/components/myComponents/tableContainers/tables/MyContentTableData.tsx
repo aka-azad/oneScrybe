@@ -5,8 +5,8 @@ import { GridApiCommunity } from '@mui/x-data-grid/internals';
 import { orderListAdmin } from 'data/e-commerce/orders';
 import useNumberFormat from 'hooks/useNumberFormat';
 import { OrderListAdmin } from 'types/ecommerce';
-import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
-import DashboardMenu from 'components/common/DashboardMenu';
+// import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
+// import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
 
 const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
@@ -20,17 +20,18 @@ const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
       break;
   }
 };
-const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'fulfilled':
-      return 'success';
-    case 'partially fulfilled':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
+// const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'fulfilled':
+//       return 'success';
+//     case 'partially fulfilled':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
+
 const getShippingMethodBadgeColor = (val: string): ChipOwnProps['color'] => {
   switch (val) {
     case 'standard':
@@ -65,9 +66,9 @@ const MyContentTableData = ({ apiRef, filterButtonEl }: MyContentTableProps) => 
         sortable: false,
         filterable: false,
         minWidth: 144,
-        renderCell: (params) => {
-          return <OrderDetailsPopper params={params} />;
-        },
+        // renderCell: (params) => {
+        //   return <OrderDetailsPopper params={params} />;
+        // },
       },
       {
         field: 'date',
@@ -115,21 +116,21 @@ const MyContentTableData = ({ apiRef, filterButtonEl }: MyContentTableProps) => 
           );
         },
       },
-      {
-        field: 'fulfillmentStatus',
-        headerName: 'Fulfillment status',
-        minWidth: 192,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.fulfillmentStatus}
-              variant="soft"
-              color={getFulfillmentStatusBadgeColor(params.row.fulfillmentStatus)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
+      // {
+      //   field: 'fulfillmentStatus',
+      //   headerName: 'Fulfillment status',
+      //   minWidth: 192,
+      //   renderCell: (params) => {
+      //     return (
+      //       <Chip
+      //         label={params.row.fulfillmentStatus}
+      //         variant="soft"
+      //         color={getFulfillmentStatusBadgeColor(params.row.fulfillmentStatus)}
+      //         sx={{ textTransform: 'capitalize' }}
+      //       />
+      //     );
+      //   },
+      // },
       {
         field: 'shippingMethod',
         headerName: 'Shipping method',
@@ -162,16 +163,16 @@ const MyContentTableData = ({ apiRef, filterButtonEl }: MyContentTableProps) => 
           );
         },
       },
-      {
-        field: 'action',
-        headerName: '',
-        filterable: false,
-        sortable: false,
-        width: 60,
-        align: 'right',
-        headerAlign: 'right',
-        renderCell: () => <DashboardMenu />,
-      },
+      // {
+      //   field: 'action',
+      //   headerName: '',
+      //   filterable: false,
+      //   sortable: false,
+      //   width: 60,
+      //   align: 'right',
+      //   headerAlign: 'right',
+      //   renderCell: () => <DashboardMenu />,
+      // },
     ],
     [currencyFormat],
   );

@@ -188,17 +188,17 @@ const ProfileMenu = ({ type = 'default' }: ProfileMenuProps) => {
         </Box>
         <Divider />
         <Box sx={{ py: 1 }}>
-          <ProfileMenuItem
+          {/* <ProfileMenuItem
             icon="material-symbols:manage-accounts-outline-rounded"
             onClick={handleClose}
             href="#!"
           >
             Account Settings
-          </ProfileMenuItem>
+          </ProfileMenuItem> */}
           <ProfileMenuItem
             icon="material-symbols:question-mark-rounded"
             onClick={handleClose}
-            href="#!"
+            href="/help/faq"
           >
             Help Center
           </ProfileMenuItem>

@@ -41,6 +41,7 @@ export default function Favorites() {
             handleChange={handleChange}
             handleSearchChange={handleSearchChange}
             searchQuery={searchQuery}
+            showSearch={false}
             selectOptions={[
               { value: 'All', label: 'All' },
               { value: 'This Week', label: 'This Week' },

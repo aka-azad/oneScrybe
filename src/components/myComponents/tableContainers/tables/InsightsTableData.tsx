@@ -1,11 +1,11 @@
 import { RefObject, useMemo } from 'react';
-import { Avatar, Box, Chip, ChipOwnProps, Link, Stack } from '@mui/material';
-import { DataGrid, GRID_CHECKBOX_SELECTION_COL_DEF, GridColDef } from '@mui/x-data-grid';
+import { Box, Chip, ChipOwnProps } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { GridApiCommunity } from '@mui/x-data-grid/internals';
 import { orderListAdmin } from 'data/e-commerce/orders';
 import useNumberFormat from 'hooks/useNumberFormat';
 import { OrderListAdmin } from 'types/ecommerce';
-import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
+// import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
 import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
 
@@ -55,51 +55,51 @@ const InsightsTable = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
 
   const columns: GridColDef<OrderListAdmin>[] = useMemo(
     () => [
-      {
-        ...GRID_CHECKBOX_SELECTION_COL_DEF,
-        width: 64,
-      },
+      // {
+      //   ...GRID_CHECKBOX_SELECTION_COL_DEF,
+      //   width: 64,
+      // },
       {
         field: 'id',
         headerName: 'Order',
         sortable: false,
         filterable: false,
         minWidth: 144,
-        renderCell: (params) => {
-          return <OrderDetailsPopper params={params} />;
-        },
+        // renderCell: (params) => {
+        //   return <OrderDetailsPopper params={params} />;
+        // },
       },
       {
         field: 'date',
         headerName: 'Date',
         width: 240,
       },
-      {
-        field: 'customer',
-        headerName: 'Customer',
-        minWidth: 280,
-        flex: 1,
-        valueGetter: ({ name }) => name,
-        renderCell: (params) => {
-          return (
-            <Stack
-              sx={{
-                gap: 1.5,
-                alignItems: 'center',
-              }}
-            >
-              <Avatar
-                alt={params.row.customer.name}
-                src={params.row.customer.avatar}
-                sx={{ width: 32, height: 32 }}
-              />
-              <Link variant="subtitle2" href="#!" sx={{ fontWeight: 400 }}>
-                {params.row.customer.name}
-              </Link>
-            </Stack>
-          );
-        },
-      },
+      // {
+      //   field: 'customer',
+      //   headerName: 'Customer',
+      //   minWidth: 280,
+      //   flex: 1,
+      //   valueGetter: ({ name }) => name,
+      //   renderCell: (params) => {
+      //     return (
+      //       <Stack
+      //         sx={{
+      //           gap: 1.5,
+      //           alignItems: 'center',
+      //         }}
+      //       >
+      //         <Avatar
+      //           alt={params.row.customer.name}
+      //           src={params.row.customer.avatar}
+      //           sx={{ width: 32, height: 32 }}
+      //         />
+      //         <Link variant="subtitle2" href="#!" sx={{ fontWeight: 400 }}>
+      //           {params.row.customer.name}
+      //         </Link>
+      //       </Stack>
+      //     );
+      //   },
+      // },
       {
         field: 'paymentStatus',
         headerName: 'Payment status',
@@ -190,7 +190,7 @@ const InsightsTable = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
             },
           },
         }}
-        checkboxSelection
+        // checkboxSelection
         slots={{
           basePagination: (props) => <DataGridPagination showFullPagination {...props} />,
         }}

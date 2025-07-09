@@ -1,30 +1,30 @@
 import { RefObject, useMemo } from 'react';
-import { useNavigate } from 'react-router';
-import { Box, Chip, ChipOwnProps, Link, Stack } from '@mui/material';
-import { DataGrid, GRID_CHECKBOX_SELECTION_COL_DEF, GridColDef } from '@mui/x-data-grid';
+// import { useNavigate } from 'react-router';
+import { Box, Stack, Typography } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { GridApiCommunity } from '@mui/x-data-grid/internals';
 import { productListAdmin } from 'data/e-commerce/products';
 import useNumberFormat from 'hooks/useNumberFormat';
-import paths from 'routes/paths';
+// import paths from 'routes/paths';
 import { ProductListAdmin } from 'types/ecommerce';
-import Image from 'components/base/Image';
+// import Image from 'components/base/Image';
 import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
 
-const getStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'active':
-      return 'success';
-    case 'inactive':
-      return 'neutral';
-    case 'draft':
-      return 'warning';
-    case 'archive':
-      return 'error';
-    default:
-      return 'primary';
-  }
-};
+// const getStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'active':
+//       return 'success';
+//     case 'inactive':
+//       return 'neutral';
+//     case 'draft':
+//       return 'warning';
+//     case 'archive':
+//       return 'error';
+//     default:
+//       return 'primary';
+//   }
+// };
 
 const zeroPad = (num: number, places: number) => String(num).padStart(places, '0');
 
@@ -37,13 +37,13 @@ interface HomeTableDataProps {
 
 const HomeTableData = ({ apiRef, filterButtonEl }: HomeTableDataProps) => {
   const { currencyFormat } = useNumberFormat();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const columns: GridColDef<ProductListAdmin>[] = useMemo(
     () => [
-      {
-        ...GRID_CHECKBOX_SELECTION_COL_DEF,
-        width: 64,
-      },
+      // {
+      //   ...GRID_CHECKBOX_SELECTION_COL_DEF,
+      //   width: 64,
+      // },
       {
         field: 'name',
         headerName: 'Name',
@@ -57,33 +57,33 @@ const HomeTableData = ({ apiRef, filterButtonEl }: HomeTableDataProps) => {
                 alignItems: 'center',
               }}
             >
-              <Image
+              {/* <Image
                 src={params.row.image.src}
                 alt={params.row.name}
                 onClick={() => navigate(paths.productDetails(String(params.row.id)))}
                 sx={{ cursor: 'pointer' }}
                 height={48}
                 width={48}
-              />
-              <Link
-                href={paths.productDetails(String(params.row.id))}
+              /> */}
+              <Typography
+                // href={paths.productDetails(String(params.row.id))}
                 variant="subtitle2"
                 sx={{ fontWeight: 400 }}
               >
                 {params.row.name}
-              </Link>
+              </Typography>
             </Stack>
           );
         },
       },
-      {
-        field: 'category',
-        headerName: 'Category',
-        minWidth: 148,
-        renderCell: (params) => {
-          return <Chip label={params.row.category} variant="soft" color="neutral" />;
-        },
-      },
+      // {
+      //   field: 'category',
+      //   headerName: 'Category',
+      //   minWidth: 148,
+      //   renderCell: (params) => {
+      //     return <Chip label={params.row.category} variant="soft" color="neutral" />;
+      //   },
+      // },
       {
         field: 'price',
         headerName: 'Price',
@@ -91,21 +91,21 @@ const HomeTableData = ({ apiRef, filterButtonEl }: HomeTableDataProps) => {
         valueGetter: ({ discounted }) => discounted,
         renderCell: ({ row: { price } }) => currencyFormat(price.discounted),
       },
-      {
-        field: 'status',
-        headerName: 'Status',
-        minWidth: 148,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.status}
-              variant="soft"
-              color={getStatusBadgeColor(params.row.status)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
+      // {
+      //   field: 'status',
+      //   headerName: 'Status',
+      //   minWidth: 148,
+      //   renderCell: (params) => {
+      //     return (
+      //       <Chip
+      //         label={params.row.status}
+      //         variant="soft"
+      //         color={getStatusBadgeColor(params.row.status)}
+      //         sx={{ textTransform: 'capitalize' }}
+      //       />
+      //     );
+      //   },
+      // },
       {
         field: 'stock',
         headerName: 'Inventory',
@@ -118,9 +118,9 @@ const HomeTableData = ({ apiRef, filterButtonEl }: HomeTableDataProps) => {
         minWidth: 200,
         renderCell: (params) => {
           return (
-            <Link variant="subtitle2" href="#!" sx={{ fontWeight: 400 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 400 }}>
               {params.row.vendor}
-            </Link>
+            </Typography>
           );
         },
       },
@@ -159,7 +159,7 @@ const HomeTableData = ({ apiRef, filterButtonEl }: HomeTableDataProps) => {
             },
           },
         }}
-        checkboxSelection
+        // checkboxSelection
         slots={{
           basePagination: (props) => <DataGridPagination showFullPagination {...props} />,
         }}
