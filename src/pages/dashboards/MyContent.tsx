@@ -9,6 +9,7 @@ import RecentProject06 from 'assets/images/kanban/board_images/6.webp';
 import PageHeaderAction from '@/components/myComponents/PageHeaderAction';
 import Thumbnails from '@/components/myComponents/Thumbnails';
 import TableForMyContent from '@/components/myComponents/tableContainers/TableForMyContent';
+import { homeThumbnails } from '@/components/myComponents/tableContainers/tablesDummyData/data';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 import { users } from '@/data/users';
 
@@ -195,7 +196,10 @@ export default function MyContent() {
       </Box>
       <Paper sx={{ flex: 1, px: { xs: 2, md: 3.5 }, pb: 2 }}>
         <Box>
-          <Thumbnails title={filter.value || 'All'} items={boards} />
+          <Thumbnails
+            title={filter.value || 'All'}
+            items={[...homeThumbnails[0].videos, ...homeThumbnails[1].videos]}
+          />
         </Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
           Table For My Content

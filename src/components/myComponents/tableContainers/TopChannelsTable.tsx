@@ -1,17 +1,16 @@
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
-import { Button, InputAdornment, Stack } from '@mui/material';
+import { ChangeEvent, useCallback } from 'react';
+import { InputAdornment, Stack } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useGridApiRef } from '@mui/x-data-grid';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Dayjs } from 'dayjs';
-import paths from 'routes/paths';
-import FilterSection from '@/components/sections/ecommerce/admin/product-list/filters/FilterSection';
 import IconifyIcon from 'components/base/IconifyIcon';
 import StyledTextField from 'components/styled/StyledTextField';
-import HomeTableData from './tables/HomeTableData';
+import TopChannelsFilter from './taableFilters/TopChannelsFilter';
+import TopChannelsTableData from './tables/TopChannelsTableData';
 
-export default function TableForHome() {
-  const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
+export default function TopChannelsTable() {
+  // const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
   const apiRef = useGridApiRef();
 
   const handleSearch = useCallback(
@@ -33,17 +32,17 @@ export default function TableForHome() {
     [apiRef],
   );
 
-  const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
-    const isPanelOpen = apiRef.current?.state.preferencePanel.open;
+  // const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
+  //   const isPanelOpen = apiRef.current?.state.preferencePanel.open;
 
-    if (isPanelOpen) {
-      setFilterButtonEl(null);
-      apiRef.current?.hideFilterPanel();
-    } else {
-      setFilterButtonEl(e.currentTarget);
-      apiRef.current?.showFilterPanel();
-    }
-  };
+  //   if (isPanelOpen) {
+  //     setFilterButtonEl(null);
+  //     apiRef.current?.hideFilterPanel();
+  //   } else {
+  //     setFilterButtonEl(e.currentTarget);
+  //     apiRef.current?.showFilterPanel();
+  //   }
+  // };
 
   return (
     <Grid container spacing={{ xs: 2, md: 4 }}>
@@ -60,20 +59,11 @@ export default function TableForHome() {
             spacing={1}
             sx={{ flexGrow: 1, alignItems: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' } }}
           >
-            <Button
-              href={paths.adminProductListing}
-              variant="contained"
-              color="primary"
-              sx={{ flexShrink: 0 }}
-            >
-              Add product
-            </Button>
-
             <StyledTextField
               id="search-box"
               type="search"
               fullWidth
-              placeholder="Search product"
+              placeholder="Search Channels"
               onChange={handleSearch}
               slotProps={{
                 input: {
@@ -119,11 +109,11 @@ export default function TableForHome() {
             />
           </Stack>
 
-          <FilterSection apiRef={apiRef} handleToggleFilterPanel={handleToggleFilterPanel} />
+          <TopChannelsFilter apiRef={apiRef} />
         </Stack>
       </Grid>
       <Grid size={12}>
-        <HomeTableData apiRef={apiRef} filterButtonEl={filterButtonEl} />
+        <TopChannelsTableData apiRef={apiRef} />
       </Grid>
     </Grid>
   );

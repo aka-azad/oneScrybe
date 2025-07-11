@@ -1,15 +1,15 @@
 import { Box, Grid, Typography } from '@mui/material';
-import { Board } from 'data/kanban/boards';
 import Thumbnail from './Thumbnail';
+import { VideoItem } from './tableContainers/tablesDummyData/data';
 
 interface ThumbnailSliderProps {
   title: string;
-  items: Board[];
+  items: VideoItem[];
 }
 
 const Thumbnails = ({ title, items }: ThumbnailSliderProps) => {
   return (
-    <Box sx={{ py: 4 }}>
+    <Box sx={{ pb: 2 }}>
       <Box sx={{ mb: 3 }}>
         <Typography variant="h5" sx={{ fontWeight: 500, mb: 2 }}>
           {title}

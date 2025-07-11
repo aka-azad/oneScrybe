@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Box, Pagination, Paper, Stack } from '@mui/material';
 import PageHeaderAction from '@/components/myComponents/PageHeaderAction';
 import Thumbnails from '@/components/myComponents/Thumbnails';
+import { homeThumbnails } from '@/components/myComponents/tableContainers/tablesDummyData/data';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
-import { boards } from './MyContent';
 
 interface Filter {
   field?: string;
@@ -50,7 +50,10 @@ export default function ExploreMusic() {
         }
       />
       <Paper sx={{ flex: 1, px: { xs: 2, md: 3.5 } }}>
-        <Thumbnails title={thumbnailsTitle} items={boards} />
+        <Thumbnails
+          title={thumbnailsTitle}
+          items={[...homeThumbnails[0].videos, ...homeThumbnails[1].videos]}
+        />
         <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
           <Pagination
             count={10}
