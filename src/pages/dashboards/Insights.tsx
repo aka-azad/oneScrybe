@@ -2,22 +2,38 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { generatedRevenueData, monthlyProfitChartData } from 'data/e-commerce/dashboard';
-import { TaskMetrics } from 'types/project';
+import InsightsCards from '@/components/myComponents/Widgets/InsightsCards';
 import TableForInsights from '@/components/myComponents/tableContainers/TableForInsights';
 // import UserByOS from '@/components/sections/dashboards/analytics/user-by-os/UserByOS';
-import TaskSummaryCard from '@/components/sections/dashboards/project/task-summary/TaskSummaryCard';
 import PageHeader from '@/components/sections/ecommerce/admin/common/PageHeader';
 // import { userByOSData } from '@/data/analytics/dashboard';
 import GeneratedRevenueChart from 'components/sections/dashboards/e-commerce/generated-revenue/GeneratedRevenueChart';
 
+export interface InsightsMetrics {
+  title: string;
+  count: number;
+  unit: string;
+  change?: {
+    amount: number;
+    direction: '% less' | '% more' | 'K Views';
+    timeFrame: string;
+  };
+  deadlineRange?: string;
+  icon: {
+    name: string;
+    color: 'primary' | 'success' | 'warning' | 'neutral';
+  };
+}
+
 // Mock data for task summary cards
-const taskMetrics: TaskMetrics[] = [
+const taskMetrics: InsightsMetrics[] = [
   {
-    title: 'Total Users',
+    title: 'Total Viewers',
     count: 24780,
+    unit: 'Viewers',
     change: {
-      amount: 12.5,
-      direction: 'more',
+      amount: 5,
+      direction: '% more',
       timeFrame: 'this month',
     },
     icon: {
@@ -26,12 +42,13 @@ const taskMetrics: TaskMetrics[] = [
     },
   },
   {
-    title: 'Active Sessions',
+    title: 'Subscribed Users',
     count: 1245,
+    unit: 'Users',
     change: {
-      amount: 8.2,
-      direction: 'more',
-      timeFrame: 'today',
+      amount: 2,
+      direction: '% more',
+      timeFrame: 'this month',
     },
     icon: {
       name: 'ph:activity',
@@ -39,29 +56,31 @@ const taskMetrics: TaskMetrics[] = [
     },
   },
   {
-    title: 'Avg. Session',
-    count: 272,
+    title: 'Avg. Views',
+    count: 62000,
+    unit: 'Views',
     change: {
-      amount: 2.3,
-      direction: 'less',
-      timeFrame: 'this week',
+      amount: 62,
+      direction: '% more',
+      timeFrame: 'this month',
     },
     icon: {
-      name: 'ph:timer',
+      name: 'ph:eye',
       color: 'warning',
     },
   },
   {
-    title: 'Bounce Rate',
-    count: 42.5,
+    title: 'Avg. Duration',
+    count: 18,
+    unit: 'Minutes',
     change: {
       amount: 5.7,
-      direction: 'less',
+      direction: '% less',
       timeFrame: 'this month',
     },
     icon: {
-      name: 'ph:add-outline',
-      color: 'neutral',
+      name: 'ph:clock',
+      color: 'success',
     },
   },
 ];
@@ -82,7 +101,7 @@ const Insights = () => {
       >
         {taskMetrics.map((metric, index) => (
           <Box key={index}>
-            <TaskSummaryCard task={metric} />
+            <InsightsCards task={metric} />
           </Box>
         ))}
       </Box>
@@ -103,7 +122,7 @@ const Insights = () => {
               }}
             >
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                Generated Revenue
+                View Rate
               </Typography>
               <GeneratedRevenueChart
                 sx={{ minHeight: '200px', width: '100%' }}
@@ -126,7 +145,7 @@ const Insights = () => {
               }}
             >
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                Monthly Profit
+                Posted Videos
               </Typography>
               <GeneratedRevenueChart
                 sx={{ minHeight: '200px', width: '100%' }}
