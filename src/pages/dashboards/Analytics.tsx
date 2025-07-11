@@ -67,7 +67,7 @@ export default function Analytics() {
       <Box sx={{ p: 2, width: '100%' }}>
         <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, p: 2, width: '100%' }}>
           <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Table For Analytics
+            Analytics Of Top Videos
           </Typography>
           <TableForAnalytics />
         </Box>

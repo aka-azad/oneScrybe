@@ -1,18 +1,18 @@
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
-import { Box, Button, InputAdornment, MenuItem, Stack } from '@mui/material';
+import { ChangeEvent, useCallback } from 'react';
+import { Box, InputAdornment, MenuItem, Stack } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useGridApiRef } from '@mui/x-data-grid';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
+// import { useBreakpoints } from 'providers/BreakpointsProvider';
 import IconifyIcon from 'components/base/IconifyIcon';
 import StyledTextField from 'components/styled/StyledTextField';
 import InsightsTableData from './tables/InsightsTableData';
 
 const TableForInsights = () => {
-  const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
+  // const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
   const apiRef = useGridApiRef();
-  const { up } = useBreakpoints();
+  // const { up } = useBreakpoints();
 
-  const upLg = up('lg');
+  // const upLg = up('lg');
 
   const handleSearch = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,17 +21,17 @@ const TableForInsights = () => {
     [apiRef],
   );
 
-  const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
-    const isPanelOpen = apiRef.current?.state.preferencePanel.open;
+  // const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
+  //   const isPanelOpen = apiRef.current?.state.preferencePanel.open;
 
-    if (isPanelOpen) {
-      setFilterButtonEl(null);
-      apiRef.current?.hideFilterPanel();
-    } else {
-      setFilterButtonEl(e.currentTarget);
-      apiRef.current?.showFilterPanel();
-    }
-  };
+  //   if (isPanelOpen) {
+  //     setFilterButtonEl(null);
+  //     apiRef.current?.hideFilterPanel();
+  //   } else {
+  //     setFilterButtonEl(e.currentTarget);
+  //     apiRef.current?.showFilterPanel();
+  //   }
+  // };
 
   return (
     <Grid container spacing={4}>
@@ -45,15 +45,11 @@ const TableForInsights = () => {
             flexWrap: { xs: 'wrap', sm: 'nowrap' },
           }}
         >
-          <Button href={'#!'} variant="contained" color="primary" sx={{ flexShrink: 0 }}>
-            Add Order
-          </Button>
-
           <StyledTextField
             id="search-box"
             type="search"
             size="medium"
-            placeholder="Search order"
+            placeholder="Search Data"
             fullWidth
             slotProps={{
               input: {
@@ -87,19 +83,7 @@ const TableForInsights = () => {
             </StyledTextField>
           </Box>
 
-          <Stack spacing={1} sx={{ order: 1, ml: { md: 2 } }}>
-            <Button
-              variant="text"
-              color="neutral"
-              shape={upLg ? undefined : 'square'}
-              disabled
-              size={upLg ? 'medium' : undefined}
-              sx={{ flexShrink: 0 }}
-            >
-              <IconifyIcon icon="material-symbols:star-rounded" fontSize={20} />
-              {upLg && <Box component="span">Saved</Box>}
-            </Button>
-
+          {/* <Stack spacing={1} sx={{ order: 1, ml: { md: 2 } }}>
             <Button
               variant="text"
               sx={{ flexShrink: 0 }}
@@ -122,12 +106,12 @@ const TableForInsights = () => {
               )}
               {upLg && <Box component="span">More filters</Box>}
             </Button>
-          </Stack>
+          </Stack> */}
         </Stack>
       </Grid>
 
       <Grid size={12}>
-        <InsightsTableData apiRef={apiRef} filterButtonEl={filterButtonEl} />
+        <InsightsTableData apiRef={apiRef} />
       </Grid>
     </Grid>
   );

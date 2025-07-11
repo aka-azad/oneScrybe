@@ -1,176 +1,105 @@
 import { RefObject, useMemo } from 'react';
-import { Box, Chip, ChipOwnProps } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { GridApiCommunity } from '@mui/x-data-grid/internals';
-import { orderListAdmin } from 'data/e-commerce/orders';
+// import { orderListAdmin } from 'data/e-commerce/orders';
 import useNumberFormat from 'hooks/useNumberFormat';
-import { OrderListAdmin } from 'types/ecommerce';
+// import { OrderListAdmin } from 'types/ecommerce';
 // import OrderDetailsPopper from '@/components/sections/ecommerce/admin/order-list/OrderDetailsPopper';
-import DashboardMenu from 'components/common/DashboardMenu';
+// import DashboardMenu from 'components/common/DashboardMenu';
 import DataGridPagination from 'components/pagination/DataGridPagination';
+import { Channel, topChannels } from '../tablesDummyData/data';
 
-const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'paid':
-      return 'success';
-    case 'due':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
-const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'fulfilled':
-      return 'success';
-    case 'partially fulfilled':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
-const getShippingMethodBadgeColor = (val: string): ChipOwnProps['color'] => {
-  switch (val) {
-    case 'standard':
-      return 'primary';
-    case 'express':
-      return 'warning';
-    default:
-      return 'neutral';
-      break;
-  }
-};
+// const getPaymentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'paid':
+//       return 'success';
+//     case 'due':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
+// const getFulfillmentStatusBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'fulfilled':
+//       return 'success';
+//     case 'partially fulfilled':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
+// const getShippingMethodBadgeColor = (val: string): ChipOwnProps['color'] => {
+//   switch (val) {
+//     case 'standard':
+//       return 'primary';
+//     case 'express':
+//       return 'warning';
+//     default:
+//       return 'neutral';
+//       break;
+//   }
+// };
 
 const defaultPageSize = 8;
 
 interface InsightsTableProps {
   apiRef: RefObject<GridApiCommunity | null>;
-  filterButtonEl: HTMLButtonElement | null;
+  filterButtonEl?: HTMLButtonElement | null;
 }
 
-const InsightsTable = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
+const InsightsTableData = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
   const { currencyFormat } = useNumberFormat();
 
-  const columns: GridColDef<OrderListAdmin>[] = useMemo(
+  const columns: GridColDef<Channel>[] = useMemo(
     () => [
-      // {
-      //   ...GRID_CHECKBOX_SELECTION_COL_DEF,
-      //   width: 64,
-      // },
       {
-        field: 'id',
-        headerName: 'Order',
-        sortable: false,
-        filterable: false,
-        minWidth: 144,
-        // renderCell: (params) => {
-        //   return <OrderDetailsPopper params={params} />;
-        // },
-      },
-      {
-        field: 'date',
-        headerName: 'Date',
-        width: 240,
-      },
-      // {
-      //   field: 'customer',
-      //   headerName: 'Customer',
-      //   minWidth: 280,
-      //   flex: 1,
-      //   valueGetter: ({ name }) => name,
-      //   renderCell: (params) => {
-      //     return (
-      //       <Stack
-      //         sx={{
-      //           gap: 1.5,
-      //           alignItems: 'center',
-      //         }}
-      //       >
-      //         <Avatar
-      //           alt={params.row.customer.name}
-      //           src={params.row.customer.avatar}
-      //           sx={{ width: 32, height: 32 }}
-      //         />
-      //         <Link variant="subtitle2" href="#!" sx={{ fontWeight: 400 }}>
-      //           {params.row.customer.name}
-      //         </Link>
-      //       </Stack>
-      //     );
-      //   },
-      // },
-      {
-        field: 'paymentStatus',
-        headerName: 'Payment status',
-        minWidth: 152,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.paymentStatus}
-              variant="soft"
-              color={getPaymentStatusBadgeColor(params.row.paymentStatus)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
-      {
-        field: 'fulfillmentStatus',
-        headerName: 'Fulfillment status',
-        minWidth: 192,
-        renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.fulfillmentStatus}
-              variant="soft"
-              color={getFulfillmentStatusBadgeColor(params.row.fulfillmentStatus)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
-        },
-      },
-      {
-        field: 'shippingMethod',
-        headerName: 'Shipping method',
-        minWidth: 152,
+        field: 'category',
+        headerName: 'Category',
+        minWidth: 200,
         flex: 1,
         renderCell: (params) => {
-          return (
-            <Chip
-              label={params.row.shippingMethod}
-              variant="soft"
-              color={getShippingMethodBadgeColor(params.row.shippingMethod)}
-              sx={{ textTransform: 'capitalize' }}
-            />
-          );
+          return <Typography sx={{ fontWeight: 400 }}>{params.row.category}</Typography>;
         },
       },
       {
-        field: 'total',
-        headerName: 'Total',
-        minWidth: 148,
+        field: 'channelname',
+        headerName: 'Channel',
+        minWidth: 200,
+        flex: 1,
         renderCell: (params) => {
-          return (
-            <strong>
-              {currencyFormat(
-                params.row.items.reduce((total, item) => {
-                  return total + item.product?.price.discounted * item.quantity;
-                }, 0),
-              )}
-            </strong>
-          );
+          return <Typography sx={{ fontWeight: 400 }}>{params.row?.channelname}</Typography>;
         },
       },
       {
-        field: 'action',
-        headerName: '',
-        filterable: false,
-        sortable: false,
-        width: 60,
-        align: 'right',
-        headerAlign: 'right',
-        renderCell: () => <DashboardMenu />,
+        field: 'numvideos',
+        headerName: 'Videos',
+        minWidth: 200,
+        flex: 1,
+        renderCell: (params) => {
+          return <Typography sx={{ fontWeight: 400 }}>{params.row?.numvideos}</Typography>;
+        },
+      },
+      {
+        field: 'subscribers',
+        headerName: 'Subscribers',
+        minWidth: 200,
+        flex: 1,
+        renderCell: (params) => {
+          return <Typography sx={{ fontWeight: 400 }}>{params.row?.subscribers}</Typography>;
+        },
+      },
+      {
+        field: 'viewers',
+        headerName: 'Viewers',
+        minWidth: 200,
+        flex: 1,
+        renderCell: (params) => {
+          return <Typography sx={{ fontWeight: 400 }}>{params.row?.viewers}</Typography>;
+        },
       },
     ],
     [currencyFormat],
@@ -178,8 +107,8 @@ const InsightsTable = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
   return (
     <Box sx={{ width: 1 }}>
       <DataGrid
-        rowHeight={64}
-        rows={orderListAdmin}
+        rowHeight={50}
+        rows={topChannels}
         apiRef={apiRef}
         columns={columns}
         pageSizeOptions={[defaultPageSize]}
@@ -204,4 +133,4 @@ const InsightsTable = ({ apiRef, filterButtonEl }: InsightsTableProps) => {
   );
 };
 
-export default InsightsTable;
+export default InsightsTableData;

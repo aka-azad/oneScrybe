@@ -15,7 +15,7 @@ export default function Home() {
         <Box sx={{ mt: 4 }}>
           <SectionHeader title="Top Channels Videos" subTitle="" />
           {homeThumbnails.map((item) => (
-            <Thumbnails title={item.section} items={item.videos} />
+            <Thumbnails key={item.section} title={item.section} items={item.videos} />
           ))}
           <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
             <Pagination

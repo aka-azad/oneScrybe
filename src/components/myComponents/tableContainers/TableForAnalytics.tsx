@@ -1,18 +1,18 @@
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
-import { Box, Button, InputAdornment, MenuItem, Stack } from '@mui/material';
+import { ChangeEvent, useCallback } from 'react';
+import { Box, InputAdornment, MenuItem, Stack } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useGridApiRef } from '@mui/x-data-grid';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
+// import { useBreakpoints } from 'providers/BreakpointsProvider';
 import IconifyIcon from 'components/base/IconifyIcon';
 import StyledTextField from 'components/styled/StyledTextField';
 import AnalyticsTableData from './tables/AnalyticsTableData';
 
 const TableForAnalytics = () => {
-  const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
+  // const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
   const apiRef = useGridApiRef();
-  const { up } = useBreakpoints();
+  // const { up } = useBreakpoints();
 
-  const upLg = up('lg');
+  // const upLg = up('lg');
 
   const handleSearch = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,17 +21,17 @@ const TableForAnalytics = () => {
     [apiRef],
   );
 
-  const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
-    const isPanelOpen = apiRef.current?.state.preferencePanel.open;
+  // const handleToggleFilterPanel = (e: MouseEvent<HTMLButtonElement>) => {
+  //   const isPanelOpen = apiRef.current?.state.preferencePanel.open;
 
-    if (isPanelOpen) {
-      setFilterButtonEl(null);
-      apiRef.current?.hideFilterPanel();
-    } else {
-      setFilterButtonEl(e.currentTarget);
-      apiRef.current?.showFilterPanel();
-    }
-  };
+  //   if (isPanelOpen) {
+  //     setFilterButtonEl(null);
+  //     apiRef.current?.hideFilterPanel();
+  //   } else {
+  //     setFilterButtonEl(e.currentTarget);
+  //     apiRef.current?.showFilterPanel();
+  //   }
+  // };
 
   return (
     <Grid container spacing={4}>
@@ -45,10 +45,6 @@ const TableForAnalytics = () => {
             flexWrap: { xs: 'wrap', sm: 'nowrap' },
           }}
         >
-          <Button href={'#!'} variant="contained" color="primary" sx={{ flexShrink: 0 }}>
-            Add Order
-          </Button>
-
           <StyledTextField
             id="search-box"
             type="search"
@@ -80,54 +76,27 @@ const TableForAnalytics = () => {
           />
 
           <Box sx={{ maxWidth: { xs: 200, sm: 150 }, width: 1, ml: 'auto' }}>
-            <StyledTextField variant="filled" fullWidth select defaultValue="30days">
-              <MenuItem value="30days">Last 30 days</MenuItem>
-              <MenuItem value="90days">Last 90 days</MenuItem>
-              <MenuItem value="lastYear">Last year</MenuItem>
+            <StyledTextField variant="filled" fullWidth select defaultValue="all">
+              <MenuItem value="all">All</MenuItem>
+              <MenuItem value="january">January</MenuItem>
+              <MenuItem value="february">February</MenuItem>
+              <MenuItem value="march">March</MenuItem>
+              <MenuItem value="april">April</MenuItem>
+              <MenuItem value="may">May</MenuItem>
+              <MenuItem value="june">June</MenuItem>
+              <MenuItem value="july">July</MenuItem>
+              <MenuItem value="august">August</MenuItem>
+              <MenuItem value="september">September</MenuItem>
+              <MenuItem value="october">October</MenuItem>
+              <MenuItem value="november">November</MenuItem>
+              <MenuItem value="december">December</MenuItem>
             </StyledTextField>
           </Box>
-
-          <Stack spacing={1} sx={{ order: 1, ml: { md: 2 } }}>
-            <Button
-              variant="text"
-              color="neutral"
-              shape={upLg ? undefined : 'square'}
-              disabled
-              size={upLg ? 'medium' : undefined}
-              sx={{ flexShrink: 0 }}
-            >
-              <IconifyIcon icon="material-symbols:star-rounded" fontSize={20} />
-              {upLg && <Box component="span">Saved</Box>}
-            </Button>
-
-            <Button
-              variant="text"
-              sx={{ flexShrink: 0 }}
-              color="neutral"
-              shape={upLg ? undefined : 'square'}
-              size={upLg ? 'medium' : undefined}
-              onClick={handleToggleFilterPanel}
-            >
-              {upLg && (
-                <IconifyIcon
-                  icon="material-symbols:swap-vert-rounded"
-                  fontSize={'20px !important'}
-                />
-              )}
-              {!upLg && (
-                <IconifyIcon
-                  icon="material-symbols:filter-alt-outline"
-                  fontSize={'20px !important'}
-                />
-              )}
-              {upLg && <Box component="span">More filters</Box>}
-            </Button>
-          </Stack>
         </Stack>
       </Grid>
 
       <Grid size={12}>
-        <AnalyticsTableData apiRef={apiRef} filterButtonEl={filterButtonEl} />
+        <AnalyticsTableData apiRef={apiRef} />
       </Grid>
     </Grid>
   );

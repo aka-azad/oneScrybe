@@ -698,3 +698,193 @@ export const homeThumbnails: VideoData = [
     ],
   },
 ];
+
+export type AnalyticsData = {
+  id: string;
+  title: string;
+  publishedAt: Date;
+  views: number;
+};
+
+export const analyticsData: AnalyticsData[] = [
+  {
+    id: 'dQw4w9WgXcQ',
+    title: 'How to Master JavaScript in 30 Days',
+    publishedAt: new Date('2024-12-15T14:30:00Z'),
+    views: 892547,
+  },
+  {
+    id: 'Xvs892k9XsQ',
+    title: 'The Ultimate Guide to React Components',
+    publishedAt: new Date('2024-12-12T09:15:32Z'),
+    views: 456789,
+  },
+  {
+    id: 'abc123DefGh',
+    title: 'CSS Grid vs Flexbox - Which Should You Use?',
+    publishedAt: new Date('2024-12-08T16:45:21Z'),
+    views: 234567,
+  },
+  {
+    id: 'NodeJs4Ever',
+    title: 'Building APIs with Node.js and Express',
+    publishedAt: new Date('2024-12-05T11:20:15Z'),
+    views: 678901,
+  },
+  {
+    id: 'PythonMagic1',
+    title: 'Python Data Science Fundamentals',
+    publishedAt: new Date('2024-12-01T08:33:44Z'),
+    views: 345678,
+  },
+  {
+    id: 'SQLqueryPro',
+    title: 'Advanced SQL Queries Every Developer Should Know',
+    publishedAt: new Date('2024-11-28T13:12:09Z'),
+    views: 567890,
+  },
+  {
+    id: 'DevOpsTools5',
+    title: 'Docker for Beginners - Complete Tutorial',
+    publishedAt: new Date('2024-11-25T10:45:33Z'),
+    views: 789012,
+  },
+  {
+    id: 'WebDesign99',
+    title: 'Modern Web Design Principles',
+    publishedAt: new Date('2024-11-22T15:22:18Z'),
+    views: 123456,
+  },
+  {
+    id: 'GitVersion1',
+    title: 'Git and GitHub - Version Control Made Easy',
+    publishedAt: new Date('2024-11-19T12:08:47Z'),
+    views: 445566,
+  },
+  {
+    id: 'TypeScript7',
+    title: 'Why TypeScript is Better Than JavaScript',
+    publishedAt: new Date('2024-11-16T09:30:26Z'),
+    views: 887799,
+  },
+  {
+    id: 'MobileFirst8',
+    title: 'Mobile-First Development Strategy',
+    publishedAt: new Date('2024-11-13T14:55:12Z'),
+    views: 334455,
+  },
+  {
+    id: 'CloudAWS456',
+    title: 'AWS for Beginners - Complete Guide',
+    publishedAt: new Date('2024-11-10T11:17:39Z'),
+    views: 556677,
+  },
+  {
+    id: 'SecurityWeb2',
+    title: 'Web Security Best Practices',
+    publishedAt: new Date('2024-11-07T16:42:55Z'),
+    views: 778899,
+  },
+  {
+    id: 'AlgorithmsFun',
+    title: 'Data Structures and Algorithms Simplified',
+    publishedAt: new Date('2024-11-04T08:24:13Z'),
+    views: 667788,
+  },
+  {
+    id: 'APIdesign101',
+    title: 'RESTful API Design Best Practices',
+    publishedAt: new Date('2024-11-01T13:37:48Z'),
+    views: 445566,
+  },
+  {
+    id: 'TestingCode3',
+    title: 'Unit Testing in JavaScript',
+    publishedAt: new Date('2024-10-29T10:19:25Z'),
+    views: 223344,
+  },
+  {
+    id: 'Performance4',
+    title: 'Frontend Performance Optimization',
+    publishedAt: new Date('2024-10-26T15:03:17Z'),
+    views: 556677,
+  },
+  {
+    id: 'DatabaseOpt5',
+    title: 'Database Optimization Techniques',
+    publishedAt: new Date('2024-10-23T09:48:52Z'),
+    views: 334455,
+  },
+  {
+    id: 'MachineLrn6',
+    title: 'Machine Learning with Python',
+    publishedAt: new Date('2024-10-20T14:15:29Z'),
+    views: 889900,
+  },
+  {
+    id: 'BlockchainABC',
+    title: 'Blockchain Development for Beginners',
+    publishedAt: new Date('2024-10-17T11:52:41Z'),
+    views: 112233,
+  },
+  {
+    id: 'MicroServices7',
+    title: 'Microservices Architecture Explained',
+    publishedAt: new Date('2024-10-14T16:28:06Z'),
+    views: 445566,
+  },
+  {
+    id: 'GraphQLnow8',
+    title: 'GraphQL vs REST API',
+    publishedAt: new Date('2024-10-11T08:14:33Z'),
+    views: 667788,
+  },
+  {
+    id: 'KubernetesK8',
+    title: 'Kubernetes for Developers',
+    publishedAt: new Date('2024-10-08T12:41:18Z'),
+    views: 778899,
+  },
+  {
+    id: 'ReactNative9',
+    title: 'React Native Mobile Development',
+    publishedAt: new Date('2024-10-05T15:07:44Z'),
+    views: 556677,
+  },
+  {
+    id: 'Vue3Update0',
+    title: 'Vue 3 New Features and Updates',
+    publishedAt: new Date('2024-10-02T09:23:51Z'),
+    views: 334455,
+  },
+  {
+    id: 'FullStackDev',
+    title: 'Full Stack Development Roadmap 2024',
+    publishedAt: new Date('2024-09-29T13:56:27Z'),
+    views: 991122,
+  },
+  {
+    id: 'CyberSecure1',
+    title: 'Cybersecurity for Developers',
+    publishedAt: new Date('2024-09-26T10:32:15Z'),
+    views: 445566,
+  },
+  {
+    id: 'MongoDBpro2',
+    title: 'MongoDB Advanced Queries',
+    publishedAt: new Date('2024-09-23T14:18:42Z'),
+    views: 223344,
+  },
+  {
+    id: 'RedisCache33',
+    title: 'Redis Caching Strategies',
+    publishedAt: new Date('2024-09-20T11:45:08Z'),
+    views: 556677,
+  },
+  {
+    id: 'ElasticSearch4',
+    title: 'Elasticsearch for Beginners',
+    publishedAt: new Date('2024-09-17T16:29:54Z'),
+    views: 334455,
+  },
+];

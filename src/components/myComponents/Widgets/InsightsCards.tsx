@@ -8,7 +8,7 @@ interface InsightsCardsProps {
 }
 const InsightsCards = ({ task }: InsightsCardsProps) => {
   return (
-    <Paper sx={{ flex: 1, px: { xs: 2, md: 2 }, py: 2 }}>
+    <Paper sx={{ flex: 1, px: { xs: 2, md: 2 }, py: 2, height: '100%' }}>
       <Stack
         spacing={2}
         direction={{
@@ -40,7 +40,7 @@ const InsightsCards = ({ task }: InsightsCardsProps) => {
 
         <Box>
           <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
-            {task.title} : {task.count} {task.unit}
+            {task.title} : {task.count} <span style={{ fontSize: 10 }}>{task.unit}</span>
           </Typography>
           {task.change ? (
             <Stack spacing={1} alignItems="center">
